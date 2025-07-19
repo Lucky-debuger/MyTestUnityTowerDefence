@@ -1,0 +1,47 @@
+using UnityEngine;
+
+public class Projectile : MonoBehaviour
+{
+    private Enemy _target;
+    private int _damage;
+    private float _speed = 10f;
+
+    public void Initialize(Enemy target, int damage)
+    {
+        _target = target;
+        _damage = damage;
+    }
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Start()
+    {
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (_target == null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        MoveToEnemy();
+
+        if (Vector3.Distance(transform.position, _target.transform.position) < 0.3f)
+        {
+            DealDamage();
+        }
+    }
+
+    void MoveToEnemy()
+    {
+        Vector3 direction = (_target.transform.position - transform.position).normalized;
+        transform.position += direction * _speed * Time.deltaTime;
+    }
+
+    void DealDamage()
+    {
+        // _target.TakeDamage(_damage);
+        Destroy(gameObject);
+    }
+}
