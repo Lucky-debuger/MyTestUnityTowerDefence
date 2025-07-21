@@ -37,6 +37,7 @@ public class Projectile : MonoBehaviour
     {
         Vector3 direction = (_target.transform.position - transform.position).normalized;
         transform.position += direction * _speed * Time.deltaTime;
+        transform.rotation = Quaternion.LookRotation(direction, Vector3.up);
     }
 
     void DealDamage()
