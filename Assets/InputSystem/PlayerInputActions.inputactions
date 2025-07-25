@@ -1,0 +1,34 @@
+{
+    "name": "PlayerInputActions",
+    "maps": [
+        {
+            "name": "Player",
+            "id": "3ced9d47-01b3-47cb-a8e6-ebb9c0c80e7d",
+            "actions": [
+                {
+                    "name": "TakeDamage",
+                    "type": "Button",
+                    "id": "4cc8818f-85cd-40c0-99fb-bec67648feed",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "1c6765c2-6abf-4817-b65a-1c7a117e9ee7",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "TakeDamage",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
