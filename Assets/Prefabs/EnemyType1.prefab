@@ -195,7 +195,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2152192009831207654}
   - component: {fileID: 4239957071121340706}
-  - component: {fileID: 5860711454825019495}
   - component: {fileID: 5834117781264038993}
   m_Layer: 6
   m_Name: EnemyType1
@@ -233,24 +232,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9f532ed78d24054a902cba3463a2ac1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 100
---- !u!114 &5860711454825019495
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 367815401756500228}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2abb3a89cedf0b44f8ae556a52f9dbe2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
   healthBar: {fileID: 2462713017357431074}
-  maxHealth: 100
-  currentHealth: 0
-  time: 0
-  damageAmount: 20
+  _maxHealth: 100
 --- !u!114 &5834117781264038993
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -278,8 +261,8 @@ MonoBehaviour:
   m_ActionEvents:
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5860711454825019495}
-        m_TargetAssemblyTypeName: TestHealthBar, Assembly-CSharp
+      - m_Target: {fileID: 4239957071121340706}
+        m_TargetAssemblyTypeName: Enemy, Assembly-CSharp
         m_MethodName: TakeDamage
         m_Mode: 0
         m_Arguments:
