@@ -19,15 +19,29 @@ public class Enemy : MonoBehaviour
     {
 
     }
-    
-    public void TakeDamage(InputAction.CallbackContext context)
-    {
-        // Debug.Log("Current phase:" + context.phase);
-        if (context.started)
-        {
-            _currentHealth -= 20;
-            healthBar.SetHealth(_currentHealth);
-        }
 
+    // public void TakeDamage(InputAction.CallbackContext context)
+    // {
+    //     // Debug.Log("Current phase:" + context.phase);
+    //     if (context.started)
+    //     {
+    //         _currentHealth -= 20;
+    //         healthBar.SetHealth(_currentHealth);
+    //     }
+
+    // }
+
+    public void TakeDamage(int damage)
+    {
+        _currentHealth -= damage;
+        if (_currentHealth <= 0)
+        {
+            Die();
+        }
+        healthBar.SetHealth(_currentHealth);
+    }
+    private void Die()
+    {
+        Destroy(gameObject);
     }
 }

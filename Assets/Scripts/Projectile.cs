@@ -3,7 +3,7 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
     private Enemy _target;
-    private int _damage;
+    [SerializeField] private int _damage;
     private float _speed = 10f;
 
     public void Initialize(Enemy target, int damage)
@@ -42,7 +42,7 @@ public class Projectile : MonoBehaviour
 
     void DealDamage()
     {
-        // _target.TakeDamage(_damage);
+        _target.TakeDamage(_damage);
         Destroy(gameObject);
     }
 }

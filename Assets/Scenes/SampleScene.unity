@@ -756,6 +756,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TowerType1
       objectReference: {fileID: 0}
+    - target: {fileID: 7293157672378942476, guid: 32118642c6e42dd428a08e56f6157116, type: 3}
+      propertyPath: _damage
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 9018824151931614858, guid: 32118642c6e42dd428a08e56f6157116, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
