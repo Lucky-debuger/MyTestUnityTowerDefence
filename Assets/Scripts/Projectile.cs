@@ -4,7 +4,7 @@ public class Projectile : MonoBehaviour
 {
     private Enemy _target;
     [SerializeField] private int _damage;
-    private float _speed = 10f;
+    [SerializeField] private float _speed = 10f;
 
     public void Initialize(Enemy target, int damage)
     {

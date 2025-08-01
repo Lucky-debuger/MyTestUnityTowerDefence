@@ -1,13 +1,24 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class Enemy : MonoBehaviour
 {
     public HealthBar healthBar;
     [SerializeField] private int _maxHealth = 100;
     private int _currentHealth;
+    public GameObject prefab;
+    public string enemyType;
+
+    private void Die()
+    {
+        EnemyFactory.Instance.ReturnToPool(gameObject, enemyType);
+    }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
+    public void Initialize()
+    {
+
+    }
+
     void Start()
     {
         _currentHealth = _maxHealth;
@@ -40,8 +51,8 @@ public class Enemy : MonoBehaviour
         }
         healthBar.SetHealth(_currentHealth);
     }
-    private void Die()
-    {
-        Destroy(gameObject);
-    }
+    // private void Die()
+    // {
+    //     Destroy(gameObject);
+    // }
 }
