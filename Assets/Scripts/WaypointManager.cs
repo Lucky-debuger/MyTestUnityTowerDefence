@@ -13,6 +13,11 @@ public class WaypointManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        GameObject parentWayPoints = GameObject.Find("WayPoints");
+        for (int i = 0; i < parentWayPoints.transform.childCount; i++)
+        {
+            wayPoints.Add(parentWayPoints.transform.GetChild(i).GetComponent<Transform>());
+        }
         StartMoving();
     }
 

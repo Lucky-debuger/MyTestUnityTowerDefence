@@ -8,10 +8,7 @@ public class Enemy : MonoBehaviour
     public GameObject prefab;
     public string enemyType;
 
-    private void Die()
-    {
-        EnemyFactory.Instance.ReturnToPool(gameObject, enemyType);
-    }
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public void Initialize()
@@ -51,8 +48,13 @@ public class Enemy : MonoBehaviour
         }
         healthBar.SetHealth(_currentHealth);
     }
+    private void Die()
+    {
+        Destroy(gameObject);
+    }
+
     // private void Die()
     // {
-    //     Destroy(gameObject);
+    //     EnemyFactory.Instance.ReturnToPool(gameObject, enemyType);
     // }
 }

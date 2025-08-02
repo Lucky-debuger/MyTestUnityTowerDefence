@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "NewWave", menuName = "TD/Wave Data")]
+// [CreateAssetMenu(fileName = "NewWave", menuName = "TD/Wave Data")]
 public class WaveData : ScriptableObject
 {
     [System.Serializable]

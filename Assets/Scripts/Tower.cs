@@ -51,7 +51,6 @@ public abstract class Tower : MonoBehaviour
             }
                
         }
-        Debug.Log(_currentTarget);
     }
 
     protected abstract void Attack();   
