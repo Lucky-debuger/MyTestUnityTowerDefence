@@ -5,6 +5,7 @@ public class SimpleProjectileTower : Tower
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     [SerializeField] float rotationSpeed = 10f;
     [SerializeField] Projectile _projectilePrefab;
+    
     protected override void Attack()
     {
         // Create projectile

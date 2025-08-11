@@ -9,6 +9,7 @@ public abstract class Tower : MonoBehaviour
 
     protected float _nextAttackTime;
     protected Enemy _currentTarget;
+    public bool isAcitive = true;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -18,6 +19,11 @@ public abstract class Tower : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!isAcitive)
+        {
+            return;
+        }
+
         RotateHead();
         if (Time.time >= _nextAttackTime)
         {
