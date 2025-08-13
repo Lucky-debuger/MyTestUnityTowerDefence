@@ -4,13 +4,13 @@ using UnityEngine;
 public class WaveData : ScriptableObject
 {
     [System.Serializable]
-    public class WaveEnemy
+    public class EnemyWave
     {
         public GameObject enemyPrefab;
         public int enemyCount;
         public float delayBetween;
     }
-    public WaveEnemy[] enemies;
+    public EnemyWave[] enemies;
     public float delayAfterWave;
 
 }
