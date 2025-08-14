@@ -23,27 +23,27 @@ public class WaveSpawner : MonoBehaviour
         {
             StartCoroutine(SpawnWave());
             _countdown = timeBetweenWaves;
-            return;
         }
         _countdown -= Time.deltaTime;
-        waveCountdownText.text = "New wave in: " + Mathf.Round(_countdown).ToString();
     }
 
     IEnumerator SpawnWave()
     {
         Wave wave = waves[_waveIndex];
-
-        for (int i = 0; i < wave.count; i++)
+        // Debug.Log(waves[0].enemyGroups[1].enemyPrefab.name);
+        for (int j = 0; j < wave.enemyGroups.Length; j++)
         {
-            SpawnEnemy(wave.enemy);
-            yield return new WaitForSeconds(1f / wave.rate);
+            for (int i = 0; i < wave.enemyGroups[j].count; i++)
+            {
+                SpawnEnemy(wave.enemyGroups[j].enemyPrefab);
+                yield return new WaitForSeconds(1f / waves[0].enemyGroups[j].rate);
+            }
         }
 
         _waveIndex++;
 
         if (_waveIndex == waves.Length)
         {
-            Debug.Log("You win!");
             this.enabled = false;
         }
     }

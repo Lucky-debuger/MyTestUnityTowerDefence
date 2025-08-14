@@ -1903,7 +1903,6 @@ MonoBehaviour:
   waves:
   - {fileID: 11400000, guid: 7e8f5d4ee09defe4788562b8cf85a905, type: 2}
   - {fileID: 11400000, guid: 1344a5c1f70444c4e8b6ba0c5bf92662, type: 2}
-  - {fileID: 11400000, guid: 4c266a48ee0f8dd419b64d4b9491d7d8, type: 2}
   spawnPoint: {fileID: 343969274}
   timeBetweenWaves: 2
   waveCountdownText: {fileID: 66277793}

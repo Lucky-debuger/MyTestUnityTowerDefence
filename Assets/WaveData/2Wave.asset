@@ -12,6 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ad98eb45d642a3479d441fd07e53cb9, type: 3}
   m_Name: 2Wave
   m_EditorClassIdentifier: 
-  enemy: {fileID: 367815401756500228, guid: 130b607073f5a0845825e55f6242abe3, type: 3}
-  count: 4
-  rate: 2
+  enemyGroups:
+  - enemyPrefab: {fileID: 367815401756500228, guid: 130b607073f5a0845825e55f6242abe3, type: 3}
+    count: 4
+    rate: 2
+  - enemyPrefab: {fileID: 367815401756500228, guid: f0e0448f0df196440a6d28696d991d2d, type: 3}
+    count: 4
+    rate: 2
