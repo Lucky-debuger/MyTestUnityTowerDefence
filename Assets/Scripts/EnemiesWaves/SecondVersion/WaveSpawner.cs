@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using TMPro;
+using System;
 
 public class WaveSpawner : MonoBehaviour
 {
@@ -25,6 +26,7 @@ public class WaveSpawner : MonoBehaviour
             _countdown = timeBetweenWaves;
         }
         _countdown -= Time.deltaTime;
+        waveCountdownText.text = "New wave in: " + Math.Round(_countdown).ToString();
     }
 
     IEnumerator SpawnWave()
