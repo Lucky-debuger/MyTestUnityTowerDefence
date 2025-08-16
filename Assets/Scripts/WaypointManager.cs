@@ -46,6 +46,11 @@ public class WaypointManager : MonoBehaviour
                 {
                     waypointIndex = 0;
                 }
+                else if (!isLoop && waypointIndex >= wayPoints.Count)
+                {
+                    EndPath();
+                    return;
+                }
             }
         }
 
@@ -54,5 +59,11 @@ public class WaypointManager : MonoBehaviour
     {
         waypointIndex = 0;
         isMoving = true;
+    }
+
+    public void EndPath()
+    {
+        PlayerStats.Lives--;
+        gameObject.GetComponent<Enemy>().Die();
     }
 }

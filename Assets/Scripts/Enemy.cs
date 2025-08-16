@@ -48,7 +48,7 @@ public class Enemy : MonoBehaviour
         }
         healthBar.SetHealth(_currentHealth);
     }
-    private void Die()
+    public void Die()
     {
         Destroy(gameObject);
         WaveSpawner.EnemiesAlive--;

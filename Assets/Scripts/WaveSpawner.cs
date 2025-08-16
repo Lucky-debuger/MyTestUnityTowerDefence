@@ -5,17 +5,19 @@ using System;
 
 public class WaveSpawner : MonoBehaviour
 {
+    public static bool isSpawning = true;
     public static int EnemiesAlive = 0;
     public Wave[] waves;
     public Transform spawnPoint;
     public float timeBetweenWaves = 5f;
     private float _countdown = 2f; // Time before start the first wave
     private int _waveIndex = 0;
+    
     public TextMeshProUGUI waveCountdownText;
 
     void Update()
     {
-        if (EnemiesAlive > 0)
+        if (EnemiesAlive > 0 || !isSpawning)
         {
             return;
         }

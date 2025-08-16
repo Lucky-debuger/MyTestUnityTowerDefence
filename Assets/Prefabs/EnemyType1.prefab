@@ -236,6 +236,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthBar: {fileID: 2462713017357431074}
   _maxHealth: 100
+  prefab: {fileID: 0}
+  enemyType: 
 --- !u!114 &5834117781264038993
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -296,7 +298,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wayPoints: []
   isMoving: 1
-  isLoop: 1
+  isLoop: 0
   waypointIndex: 0
   moveSpeed: 10
   rotationSpeed: 10

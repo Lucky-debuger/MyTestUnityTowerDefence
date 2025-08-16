@@ -298,7 +298,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wayPoints: []
   isMoving: 1
-  isLoop: 1
+  isLoop: 0
   waypointIndex: 0
   moveSpeed: 10
   rotationSpeed: 10
