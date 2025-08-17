@@ -121,5 +121,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae2b4544e1b53444ba748badef030c98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  impactEffect: {fileID: 4391141633179357407, guid: 12c1bab9427448a46ac35f0fc510f3d4, type: 3}
   _damage: 20
   _speed: 20
