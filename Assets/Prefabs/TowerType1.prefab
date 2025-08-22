@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4503625940968758502}
   - component: {fileID: 4820326172125614867}
   - component: {fileID: 8723898507023198928}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -120,7 +120,7 @@ GameObject:
   - component: {fileID: 6000621148621430468}
   - component: {fileID: 3699875845901568835}
   - component: {fileID: 4957669044528380697}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -227,7 +227,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9018824151931614858}
   - component: {fileID: 7293157672378942476}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: TowerType1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -265,7 +265,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _attackRange: 10
   _attackRate: 2
-  _damage: 10
+  _damage: 20
   _projectileSpawnPoint: {fileID: 4689219742675834634}
   isAcitive: 1
   rotationSpeed: 5
@@ -279,7 +279,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4689219742675834634}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: ProjectileSpawnPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -313,7 +313,7 @@ GameObject:
   - component: {fileID: 941221504612060585}
   - component: {fileID: 185601327596203974}
   - component: {fileID: 7193460521146414829}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}

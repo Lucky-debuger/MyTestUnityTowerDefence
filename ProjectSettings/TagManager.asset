@@ -10,12 +10,12 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Tower
   - Water
   - UI
   - Enemy
   - Ground
-  - 
+  - BuildZone
   - 
   - 
   - 
