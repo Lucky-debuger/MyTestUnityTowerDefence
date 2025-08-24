@@ -45,15 +45,6 @@ public class DragAndDrop : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
         {
             currentModel.transform.position = hit.point + distanceAboveGround;
             // Debug.Log("Попал в объект: " + hit.collider.name);
-            GameObject selectedObject = hit.collider.gameObject;
-            if (selectedObject.name == "BuildZone")
-            {
-                Debug.Log(selectedObject.name);
-                BuildZoneVisual buildZoneVisual = GetComponent<BuildZoneVisual>();
-                Material buildZoneMaterial = GetComponent<Material>();
-                MeshRenderer meshRenderer = GetComponent<MeshRenderer>();
-                meshRenderer.material = Resources.Load<Material>("Materials/Red");                
-            }
         }
     }
 }
