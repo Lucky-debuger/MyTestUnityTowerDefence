@@ -4,6 +4,7 @@ using UnityEngine.EventSystems;
 public class DragAndDrop : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     public GameObject prefab3DModel;
+    public Vector3 positionOffset;
     public LayerMask groundLayer;
     private Vector3 distanceAboveGround = new Vector3(0f, 0.55f, 0f);
     private GameObject currentModel;
@@ -30,8 +31,22 @@ public class DragAndDrop : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        currentModel.GetComponent<SimpleProjectileTower>().isAcitive = true;
-        currentModel = null;
+        Ray ray = mainCamera.ScreenPointToRay(eventData.position);
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit, 100, groundLayer))
+        {
+            if (hit.collider.gameObject.CompareTag("BuildZone"))
+            {
+                currentModel.gameObject.transform.position = hit.collider.transform.position + positionOffset;
+                currentModel.GetComponent<SimpleProjectileTower>().isAcitive = true;
+                currentModel = null;
+            }
+
+            else
+            {
+                Destroy(currentModel);
+            }
+        }
     }
 
     private void UpdateModelPosition(PointerEventData eventData)
@@ -44,7 +59,8 @@ public class DragAndDrop : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
         if (Physics.Raycast(ray, out hit, 100, groundLayer))
         {
             currentModel.transform.position = hit.point + distanceAboveGround;
-            // Debug.Log("Попал в объект: " + hit.collider.name);
         }
     }
+
+
 }
