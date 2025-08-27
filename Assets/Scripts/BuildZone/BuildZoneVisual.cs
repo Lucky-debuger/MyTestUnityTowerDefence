@@ -14,7 +14,6 @@ public class BuildZoneVisual : MonoBehaviour
     {
         meshRend = GetComponent<MeshRenderer>();
         startColor = meshRend.material.color;
-        Debug.Log(startColor);
     }
 
     void OnMouseEnter()
