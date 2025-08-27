@@ -37,6 +37,9 @@ public class DragAndDrop : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
         {
             if (hit.collider.gameObject.CompareTag("BuildZone"))
             {
+                BuildZoneVisual buildZoneVisual = hit.collider.gameObject.GetComponent<BuildZoneVisual>();
+                buildZoneVisual.turret = currentModel;
+                buildZoneVisual.SetStartColor();
                 currentModel.gameObject.transform.position = hit.collider.transform.position + positionOffset;
                 currentModel.GetComponent<SimpleProjectileTower>().isAcitive = true;
                 currentModel = null;
@@ -59,6 +62,10 @@ public class DragAndDrop : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
         if (Physics.Raycast(ray, out hit, 100, groundLayer))
         {
             currentModel.transform.position = hit.point + distanceAboveGround;
+            if (hit.collider.gameObject.CompareTag("BuildZone"))
+            {
+                hit.collider.gameObject.GetComponent<BuildZoneVisual>().SetBrightColor();
+            }
         }
     }
 
