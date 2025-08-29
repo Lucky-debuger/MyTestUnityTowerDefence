@@ -7,7 +7,7 @@ public class CameraController : MonoBehaviour
 {
     private bool doMovement = true;
     public float panSpeed = 30f;
-    public float panBorderThickness = 100f;
+    public float panBorderThickness = 10f;
     public float scrollSpeed = 5f;
     public float minOrthographicScale = 4f;
     public float maxOrthographicScale = 14;

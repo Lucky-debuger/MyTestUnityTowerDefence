@@ -16,6 +16,7 @@ public class BuildManager : MonoBehaviour
         instanse = this;
     }
     public GameObject standartTurretPrefab;
+    public GameObject missileLauncherPrefab;
 
     void Start()
     {

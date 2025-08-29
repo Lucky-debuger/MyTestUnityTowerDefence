@@ -20,7 +20,7 @@ public class DragAndDrop : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
     {
         // Debug.Log("Он на меня кликнул!");
         currentModel = Instantiate(prefab3DModel);
-        currentModel.GetComponent<SimpleProjectileTower>().isAcitive = false;
+        currentModel.GetComponent<Tower>().isAcitive = false;
         UpdateModelPosition(eventData);
     }
 
@@ -41,7 +41,7 @@ public class DragAndDrop : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
                 buildZoneVisual.turret = currentModel;
                 buildZoneVisual.SetStartColor();
                 currentModel.gameObject.transform.position = hit.collider.transform.position + positionOffset;
-                currentModel.GetComponent<SimpleProjectileTower>().isAcitive = true;
+                currentModel.GetComponent<Tower>().isAcitive = true;
                 currentModel = null;
             }
 

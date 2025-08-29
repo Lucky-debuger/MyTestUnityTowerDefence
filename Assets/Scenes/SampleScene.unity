@@ -661,7 +661,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   panSpeed: 30
-  panBorderThickness: 100
+  panBorderThickness: 10
+  scrollSpeed: 5
+  minOrthographicScale: 4
+  maxOrthographicScale: 14
 --- !u!1 &343969273
 GameObject:
   m_ObjectHideFlags: 0
@@ -1562,7 +1565,7 @@ PrefabInstance:
       objectReference: {fileID: 415990017}
     - target: {fileID: 4330682215188297424, guid: 5a9330bc6b9c3594594a793729fd8a41, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: PurchaseAnotherTurret
+      value: PurchaseMissileLauncher
       objectReference: {fileID: 0}
     - target: {fileID: 8785253907901116632, guid: 5a9330bc6b9c3594594a793729fd8a41, type: 3}
       propertyPath: m_Pivot.x
@@ -1646,7 +1649,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8790275702235680435, guid: 5a9330bc6b9c3594594a793729fd8a41, type: 3}
       propertyPath: m_Name
-      value: AnotherTurretItem
+      value: MissileLauncherItem
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2036,6 +2039,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   standartTurretPrefab: {fileID: 6682875402745529676, guid: 32118642c6e42dd428a08e56f6157116, type: 3}
+  missileLauncherPrefab: {fileID: 991127428064218448, guid: e0e4e5e1f4707e946bd78fd06cdd2991, type: 3}
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -2970,6 +2974,28 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1602069366}
   m_CullTransparentMesh: 1
+--- !u!1 &1623319915 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8790275702235680435, guid: 5a9330bc6b9c3594594a793729fd8a41, type: 3}
+  m_PrefabInstance: {fileID: 1205154837020449923}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1623319920
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1623319915}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4414a278be2509146a8b3bac31de6ac9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab3DModel: {fileID: 991127428064218448, guid: e0e4e5e1f4707e946bd78fd06cdd2991, type: 3}
+  positionOffset: {x: 0, y: 0.5, z: 0}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 384
 --- !u!1 &1895710788
 GameObject:
   m_ObjectHideFlags: 0
@@ -3306,6 +3332,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f7fea29a8ca52f42953de70e7c17271, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isWorking: 0
   waves:
   - {fileID: 11400000, guid: 7e8f5d4ee09defe4788562b8cf85a905, type: 2}
   - {fileID: 11400000, guid: 1344a5c1f70444c4e8b6ba0c5bf92662, type: 2}
@@ -3760,7 +3787,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8790275702235680435, guid: 5a9330bc6b9c3594594a793729fd8a41, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1623319920}
   m_SourcePrefab: {fileID: 100100000, guid: 5a9330bc6b9c3594594a793729fd8a41, type: 3}
 --- !u!1001 &8774487908852210053
 PrefabInstance:
@@ -3933,14 +3963,14 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 827651961}
+  - {fileID: 2004192234}
+  - {fileID: 1141702721}
   - {fileID: 330585546}
   - {fileID: 410087041}
   - {fileID: 832575519}
   - {fileID: 399108413}
   - {fileID: 1920868294}
   - {fileID: 1971701994}
-  - {fileID: 1141702721}
-  - {fileID: 2004192234}
   - {fileID: 343969274}
   - {fileID: 871483370}
   - {fileID: 312209141}

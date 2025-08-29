@@ -5,6 +5,7 @@ using System;
 
 public class WaveSpawner : MonoBehaviour
 {
+    public bool isWorking = true;
     public static bool isSpawning = true;
     public static int EnemiesAlive = 0;
     public Wave[] waves;
@@ -17,6 +18,8 @@ public class WaveSpawner : MonoBehaviour
 
     void Update()
     {
+        if (!isWorking) return;
+        
         if (EnemiesAlive > 0 || !isSpawning)
         {
             return;

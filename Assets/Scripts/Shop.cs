@@ -4,11 +4,11 @@ public class Shop : MonoBehaviour
 {
     public void PurchaseStandardTurret()
     {
-        Debug.Log("Standard turret purchased");
+        Debug.Log("Standard turret selected");
     }
 
-    public void PurchaseAnotherTurret()
+    public void PurchaseMissileLauncher()
     {
-        Debug.Log("Another turret purchased");
+        Debug.Log("Missile launcher selected");
     }
 }
