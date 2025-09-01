@@ -4,7 +4,7 @@ public class Projectile : MonoBehaviour
 {
     public GameObject impactEffect;
     private Enemy _target;
-    [SerializeField] private int _damage;
+    private int _damage;
     [SerializeField] private float _speed = 10f;
 
     public void Initialize(Enemy target, int damage)

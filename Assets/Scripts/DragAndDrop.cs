@@ -38,6 +38,12 @@ public class DragAndDrop : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
             if (hit.collider.gameObject.CompareTag("BuildZone"))
             {
                 BuildZoneVisual buildZoneVisual = hit.collider.gameObject.GetComponent<BuildZoneVisual>();
+                if (buildZoneVisual.turret != null)
+                {
+                    Destroy(currentModel);
+                    currentModel = null;
+                    return;
+                }
                 buildZoneVisual.turret = currentModel;
                 buildZoneVisual.SetStartColor();
                 currentModel.gameObject.transform.position = hit.collider.transform.position + positionOffset;
