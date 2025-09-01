@@ -1,5 +1,6 @@
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.SocialPlatforms.Impl;
 
@@ -11,6 +12,11 @@ public class CameraController : MonoBehaviour
     public float scrollSpeed = 5f;
     public float minOrthographicScale = 4f;
     public float maxOrthographicScale = 14;
+
+    public float upperBound = -3;
+    public float bottomBound = 22;
+    public float leftBound = -20;
+    public float rightBound = 5;
 
     private Vector3 direction;
 
@@ -26,8 +32,12 @@ public class CameraController : MonoBehaviour
             return;
         }
 
+        Vector2 current2DPos = new Vector2(transform.position.x, transform.position.z);
+
         if (Input.GetKey("w") || Input.mousePosition.y >= Screen.height - panBorderThickness)
         {
+            if (transform.position.z >= upperBound) return;
+
             direction = transform.forward;
             direction.y = 0;
             direction = direction.normalized;
@@ -36,6 +46,7 @@ public class CameraController : MonoBehaviour
 
         if (Input.GetKey("s") || Input.mousePosition.y <= panBorderThickness)
         {
+            if (transform.position.z <= bottomBound) return;
             direction = transform.forward;
             direction.y = 0;
             direction = direction.normalized;
@@ -44,11 +55,15 @@ public class CameraController : MonoBehaviour
 
         if (Input.GetKey("d") || Input.mousePosition.x >= Screen.width - panBorderThickness)
         {
+            if (transform.position.x >= rightBound) return;
+
             transform.Translate(transform.right * panSpeed * Time.deltaTime, Space.World);
         }
 
         if (Input.GetKey("a") || Input.mousePosition.x <= panBorderThickness)
         {
+            if (transform.position.x <= leftBound) return;
+
             transform.Translate(-transform.right * panSpeed * Time.deltaTime, Space.World);
         }
 
