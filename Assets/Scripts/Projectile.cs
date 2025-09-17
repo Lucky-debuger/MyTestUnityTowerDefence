@@ -43,8 +43,12 @@ public class Projectile : MonoBehaviour
 
     void DealDamage()
     {
-        GameObject insEffect = Instantiate(impactEffect, transform.position, transform.rotation);
-        Destroy(insEffect, 2f);
+        if (impactEffect)
+        {
+            GameObject insEffect = Instantiate(impactEffect, transform.position, transform.rotation);
+            Destroy(insEffect, 2f);   
+        }
+
         _target.TakeDamage(_damage);
         Destroy(gameObject);
     }
