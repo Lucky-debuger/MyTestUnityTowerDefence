@@ -8,7 +8,7 @@ public abstract class Tower : MonoBehaviour
     [SerializeField] protected Transform _projectileSpawnPoint;
 
     protected float _nextAttackTime;
-    protected Enemy _currentTarget;
+    protected Transform _currentTarget;
     public bool isAcitive = true;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -53,7 +53,8 @@ public abstract class Tower : MonoBehaviour
             {
                 closestDistance = distance;
                 // _currentTarget = enemyCollider.GetComponentInParent<Enemy>();
-                _currentTarget = enemyCollider.transform.root.GetComponent<Enemy>();
+                // _currentTarget = enemyCollider.transform.root.GetComponent<Enemy>();
+                _currentTarget = enemyCollider.transform;
             }
                
         }

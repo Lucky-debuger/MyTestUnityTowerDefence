@@ -3104,7 +3104,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 7e8f5d4ee09defe4788562b8cf85a905, type: 2}
   - {fileID: 11400000, guid: 1344a5c1f70444c4e8b6ba0c5bf92662, type: 2}
   spawnPoint: {fileID: 343969274}
-  timeBetweenWaves: 2
+  timeBetweenWaves: 3
   waveCountdownText: {fileID: 66277793}
 --- !u!1 &2042511851
 GameObject:
