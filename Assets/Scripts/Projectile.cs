@@ -48,7 +48,7 @@ public class Projectile : MonoBehaviour
         if (impactEffect)
         {
             GameObject insEffect = Instantiate(impactEffect, transform.position, transform.rotation);
-            Destroy(insEffect, 2f);
+            Destroy(insEffect, 5f);
         }
 
         if (explosionRadius > 0f)
@@ -81,7 +81,7 @@ public class Projectile : MonoBehaviour
         }
     }
 
-    void DealDamage(Transform enemy) // Почему именно Transform мы могли написать по видео вместо Enemy? 
+    void DealDamage(Transform enemy) // Почему именно Transform? 
     {
         enemy.root.GetComponent<Enemy>().TakeDamage(_damage);
         Debug.Log("ААА");
