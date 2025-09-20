@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class Shop : MonoBehaviour
 {
+    public TurretBlueprint standartTurret;
+    public TurretBlueprint missileLauncher;
     public void PurchaseStandardTurret()
     {
         Debug.Log("Standard turret selected");
