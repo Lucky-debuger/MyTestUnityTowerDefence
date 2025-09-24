@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class BuildManager : MonoBehaviour
 {
-    public static BuildManager instanse;
+    public static BuildManager instanse; // Разобраться с паттерном
 
     void Awake()
     {
@@ -17,15 +17,16 @@ public class BuildManager : MonoBehaviour
     }
     public GameObject standartTurretPrefab;
     public GameObject missileLauncherPrefab;
+    private GameObject turretToBuild;
 
     void Start()
     {
         turretToBuild = standartTurretPrefab;
     }
-    private GameObject turretToBuild;
 
-    public GameObject GetTurretToBuild()
+
+    public void GetTurretToBuild(GameObject turret) // Через этот метод я передаю туррель для стоительства BuildManager?
     {
-        return turretToBuild;
+        turretToBuild = turret;
     }
 }
