@@ -3,17 +3,17 @@ using UnityEngine;
 
 public class BuildManager : MonoBehaviour
 {
-    public static BuildManager instanse; // Разобраться с паттерном
+    public static BuildManager instance; // Разобраться с паттерном
 
     void Awake()
     {
-        if (instanse != null)
+        if (instance!= null)
         {
             Debug.Log("More than one BuildManager in scene!");
             return;
         }
 
-        instanse = this;
+        instance = this;
     }
     public GameObject standartTurretPrefab;
     public GameObject missileLauncherPrefab;
@@ -24,9 +24,13 @@ public class BuildManager : MonoBehaviour
         turretToBuild = standartTurretPrefab;
     }
 
-
-    public void GetTurretToBuild(GameObject turret) // Через этот метод я передаю туррель для стоительства BuildManager?
+    public void SetTurretToBuild(GameObject turret) // Через этот метод я передаю туррель для стоительства BuildManager?
     {
         turretToBuild = turret;
+    }
+
+    public GameObject GetTurretToBuild()
+    {
+        return turretToBuild;
     }
 }
