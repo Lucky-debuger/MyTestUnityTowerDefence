@@ -17,7 +17,15 @@ public class DragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
     {
         // BuildManger.SetTurretToBuild()
         // BuildManager.instance.SetTurretToBuild(turretBlueprint);
-        Debug.Log(turretBlueprint.prefab.name);
+        if (turretBlueprint.type == "Standart")
+        {
+            Shop.instance.SelectStandardTurret();
+        }
+        else if (turretBlueprint.type == "MissileLauncher")
+        {
+            Shop.instance.SelectMissileLauncher();
+        }
+        Debug.Log(turretBlueprint.type);
         dragObject = Instantiate(BuildManager.instance.GetTurretToBuild().prefab);
         dragObject.transform.position = GetWorldPosition(eventData);
     }

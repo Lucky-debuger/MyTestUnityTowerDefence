@@ -418,6 +418,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   turretBlueprint:
+    type: Standart
     prefab: {fileID: 6682875402745529676, guid: 32118642c6e42dd428a08e56f6157116, type: 3}
     cost: 100
 --- !u!1001 &327873680
@@ -1511,9 +1512,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   standartTurret:
+    type: 
     prefab: {fileID: 6682875402745529676, guid: 32118642c6e42dd428a08e56f6157116, type: 3}
     cost: 100
   missileLauncher:
+    type: 
     prefab: {fileID: 991127428064218448, guid: e0e4e5e1f4707e946bd78fd06cdd2991, type: 3}
     cost: 300
 --- !u!1001 &459524611
@@ -1961,9 +1964,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   standartTurretPrefab:
+    type: 
     prefab: {fileID: 0}
     cost: 0
   missileLauncherPrefab:
+    type: 
     prefab: {fileID: 0}
     cost: 0
 --- !u!1 &832575517
@@ -2813,6 +2818,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   turretBlueprint:
+    type: MissileLauncher
     prefab: {fileID: 991127428064218448, guid: e0e4e5e1f4707e946bd78fd06cdd2991, type: 3}
     cost: 300
 --- !u!4 &1458677316 stripped
@@ -2830,63 +2836,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6246264925069764735, guid: d75a05192a778824a93b8ad79ccdeb7e, type: 3}
   m_PrefabInstance: {fileID: 397591663}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &1637256059
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 6339742747051676481, guid: d5b18c15873c04343bff801a9f36760a, type: 3}
-      propertyPath: m_Name
-      value: MissileExplosionEffectFinal
-      objectReference: {fileID: 0}
-    - target: {fileID: 6960955285045303202, guid: d5b18c15873c04343bff801a9f36760a, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -9.641319
-      objectReference: {fileID: 0}
-    - target: {fileID: 6960955285045303202, guid: d5b18c15873c04343bff801a9f36760a, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.65
-      objectReference: {fileID: 0}
-    - target: {fileID: 6960955285045303202, guid: d5b18c15873c04343bff801a9f36760a, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 4.100386
-      objectReference: {fileID: 0}
-    - target: {fileID: 6960955285045303202, guid: d5b18c15873c04343bff801a9f36760a, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6960955285045303202, guid: d5b18c15873c04343bff801a9f36760a, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6960955285045303202, guid: d5b18c15873c04343bff801a9f36760a, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6960955285045303202, guid: d5b18c15873c04343bff801a9f36760a, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6960955285045303202, guid: d5b18c15873c04343bff801a9f36760a, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6960955285045303202, guid: d5b18c15873c04343bff801a9f36760a, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6960955285045303202, guid: d5b18c15873c04343bff801a9f36760a, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: d5b18c15873c04343bff801a9f36760a, type: 3}
 --- !u!1 &1895710788
 GameObject:
   m_ObjectHideFlags: 0
@@ -3873,4 +3822,3 @@ SceneRoots:
   - {fileID: 343969274}
   - {fileID: 871483370}
   - {fileID: 312209141}
-  - {fileID: 1637256059}
