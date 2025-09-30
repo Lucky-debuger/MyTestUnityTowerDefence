@@ -6,11 +6,13 @@ public class Shop : MonoBehaviour
     public TurretBlueprint missileLauncher;
     public void SelectStandardTurret()
     {
-        Debug.Log("Standard turret selected");
+        BuildManager.instance.SetTurretToBuild(standartTurret);
+        Debug.Log(2);
     }
 
     public void SelectMissileLauncher()
     {
-        Debug.Log("Missile launcher selected");
+        BuildManager.instance.SetTurretToBuild(missileLauncher);
+        Debug.Log(1);
     }
 }
