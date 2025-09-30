@@ -417,6 +417,9 @@ MonoBehaviour:
   layer:
     serializedVersion: 2
     m_Bits: 128
+  turretBlueprint:
+    prefab: {fileID: 6682875402745529676, guid: 32118642c6e42dd428a08e56f6157116, type: 3}
+    cost: 100
 --- !u!1001 &327873680
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1957,8 +1960,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78121f15200fb164cad3353c66b182ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  standartTurretPrefab: {fileID: 6682875402745529676, guid: 32118642c6e42dd428a08e56f6157116, type: 3}
-  missileLauncherPrefab: {fileID: 991127428064218448, guid: e0e4e5e1f4707e946bd78fd06cdd2991, type: 3}
+  standartTurretPrefab:
+    prefab: {fileID: 0}
+    cost: 0
+  missileLauncherPrefab:
+    prefab: {fileID: 0}
+    cost: 0
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -2894,6 +2901,9 @@ MonoBehaviour:
   layer:
     serializedVersion: 2
     m_Bits: 128
+  turretBlueprint:
+    prefab: {fileID: 991127428064218448, guid: e0e4e5e1f4707e946bd78fd06cdd2991, type: 3}
+    cost: 300
 --- !u!4 &1458677316 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6246264925069764735, guid: d75a05192a778824a93b8ad79ccdeb7e, type: 3}

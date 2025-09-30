@@ -15,21 +15,21 @@ public class BuildManager : MonoBehaviour
 
         instance = this;
     }
-    public GameObject standartTurretPrefab;
-    public GameObject missileLauncherPrefab;
-    private GameObject turretToBuild;
+    public TurretBlueprint standartTurretPrefab;
+    public TurretBlueprint missileLauncherPrefab;
+    private TurretBlueprint turretToBuild;
 
     void Start()
     {
         turretToBuild = standartTurretPrefab;
     }
 
-    public void SetTurretToBuild(GameObject turret) // Через этот метод я передаю туррель для стоительства BuildManager?
+    public void SetTurretToBuild(TurretBlueprint turretBlueprint) // Через этот метод я передаю туррель для стоительства BuildManager?
     {
-        turretToBuild = turret;
+        turretToBuild = turretBlueprint;
     }
 
-    public GameObject GetTurretToBuild()
+    public TurretBlueprint GetTurretToBuild()
     {
         return turretToBuild;
     }

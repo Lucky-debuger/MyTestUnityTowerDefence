@@ -5,6 +5,7 @@ public class DragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 {
     public Vector3 offset;
     public LayerMask layer;
+    public TurretBlueprint turretBlueprint;
     private Camera mainCamera;
     private GameObject dragObject;
 
@@ -15,7 +16,9 @@ public class DragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
     public void OnBeginDrag(PointerEventData eventData)
     {
         // BuildManger.SetTurretToBuild()
-        dragObject = Instantiate(BuildManager.instance.GetTurretToBuild());
+        // BuildManager.instance.SetTurretToBuild(turretBlueprint);
+        Debug.Log(turretBlueprint.prefab.name);
+        dragObject = Instantiate(BuildManager.instance.GetTurretToBuild().prefab);
         dragObject.transform.position = GetWorldPosition(eventData);
     }
 
@@ -29,7 +32,7 @@ public class DragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
         Destroy(dragObject);
     }
 
-    private Vector3 GetWorldPosition(PointerEventData eventData)
+    private Vector3 GetWorldPosition(PointerEventData eventData) // Разобраться, как работает
     {
         Ray ray = mainCamera.ScreenPointToRay(eventData.position);
         RaycastHit hit;
