@@ -396,31 +396,6 @@ Transform:
   - {fileID: 1458677316}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &327865590 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8790275702235680435, guid: 5a9330bc6b9c3594594a793729fd8a41, type: 3}
-  m_PrefabInstance: {fileID: 1205154837020449923}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &327865595
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 327865590}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 18d81d75ce51b004f8e728fb4a4f0180, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  offset: {x: 0, y: 1, z: 0}
-  layer:
-    serializedVersion: 2
-    m_Bits: 128
-  turretBlueprint:
-    type: Standart
-    prefab: {fileID: 6682875402745529676, guid: 32118642c6e42dd428a08e56f6157116, type: 3}
-    cost: 100
 --- !u!1001 &327873680
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1584,46 +1559,38 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 415990013}
     m_Modifications:
-    - target: {fileID: 1456006870887132390, guid: 5a9330bc6b9c3594594a793729fd8a41, type: 3}
-      propertyPath: m_Color.b
-      value: 1
+    - target: {fileID: 3160059830332752483, guid: 5a9330bc6b9c3594594a793729fd8a41, type: 3}
+      propertyPath: offset.y
+      value: 0.3
       objectReference: {fileID: 0}
-    - target: {fileID: 1456006870887132390, guid: 5a9330bc6b9c3594594a793729fd8a41, type: 3}
-      propertyPath: m_Color.g
-      value: 0.25471687
+    - target: {fileID: 3160059830332752483, guid: 5a9330bc6b9c3594594a793729fd8a41, type: 3}
+      propertyPath: layer.m_Bits
+      value: 128
       objectReference: {fileID: 0}
-    - target: {fileID: 1456006870887132390, guid: 5a9330bc6b9c3594594a793729fd8a41, type: 3}
-      propertyPath: m_Color.r
-      value: 0.9760574
+    - target: {fileID: 3160059830332752483, guid: 5a9330bc6b9c3594594a793729fd8a41, type: 3}
+      propertyPath: offsetOnDrag.y
+      value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3160059830332752483, guid: 5a9330bc6b9c3594594a793729fd8a41, type: 3}
+      propertyPath: offsetOnDrag.z
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3160059830332752483, guid: 5a9330bc6b9c3594594a793729fd8a41, type: 3}
+      propertyPath: offsetOnBuild.y
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3160059830332752483, guid: 5a9330bc6b9c3594594a793729fd8a41, type: 3}
+      propertyPath: buildZoneLayer.m_Bits
+      value: 256
+      objectReference: {fileID: 0}
+    - target: {fileID: 3160059830332752483, guid: 5a9330bc6b9c3594594a793729fd8a41, type: 3}
+      propertyPath: turretBlueprint.prefab
+      value: 
+      objectReference: {fileID: 991127428064218448, guid: e0e4e5e1f4707e946bd78fd06cdd2991, type: 3}
     - target: {fileID: 4330682215188297424, guid: 5a9330bc6b9c3594594a793729fd8a41, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 415990017}
-    - target: {fileID: 4330682215188297424, guid: 5a9330bc6b9c3594594a793729fd8a41, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SelectMissileLauncher
-      objectReference: {fileID: 0}
-    - target: {fileID: 4408577769409354668, guid: 5a9330bc6b9c3594594a793729fd8a41, type: 3}
-      propertyPath: m_text
-      value: Missile
-      objectReference: {fileID: 0}
-    - target: {fileID: 4408577769409354668, guid: 5a9330bc6b9c3594594a793729fd8a41, type: 3}
-      propertyPath: m_fontSize
-      value: 24.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 4408577769409354668, guid: 5a9330bc6b9c3594594a793729fd8a41, type: 3}
-      propertyPath: m_fontStyle
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8654615549850655737, guid: 5a9330bc6b9c3594594a793729fd8a41, type: 3}
-      propertyPath: m_text
-      value: Missile
-      objectReference: {fileID: 0}
-    - target: {fileID: 8654615549850655737, guid: 5a9330bc6b9c3594594a793729fd8a41, type: 3}
-      propertyPath: m_fontSize
-      value: 21.15
-      objectReference: {fileID: 0}
     - target: {fileID: 8785253907901116632, guid: 5a9330bc6b9c3594594a793729fd8a41, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1708,14 +1675,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MissileLauncherItem
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 7717643147039674610, guid: 5a9330bc6b9c3594594a793729fd8a41, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 8790275702235680435, guid: 5a9330bc6b9c3594594a793729fd8a41, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1443349479}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5a9330bc6b9c3594594a793729fd8a41, type: 3}
 --- !u!1 &599836876
 GameObject:
@@ -1902,6 +1865,7 @@ GameObject:
   - component: {fileID: 827651960}
   - component: {fileID: 827651962}
   - component: {fileID: 827651963}
+  - component: {fileID: 827651964}
   m_Layer: 0
   m_Name: GameMaster
   m_TagString: Untagged
@@ -1971,6 +1935,21 @@ MonoBehaviour:
     type: 
     prefab: {fileID: 0}
     cost: 0
+--- !u!114 &827651964
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 827651959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73875db5fffa25144b56b31a66fe5c01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buildZoneLayer:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -2796,31 +2775,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1371579118}
   m_CullTransparentMesh: 1
---- !u!1 &1443349474 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8790275702235680435, guid: 5a9330bc6b9c3594594a793729fd8a41, type: 3}
-  m_PrefabInstance: {fileID: 539902957}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1443349479
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1443349474}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 18d81d75ce51b004f8e728fb4a4f0180, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  offset: {x: 0, y: 1, z: 0}
-  layer:
-    serializedVersion: 2
-    m_Bits: 128
-  turretBlueprint:
-    type: MissileLauncher
-    prefab: {fileID: 991127428064218448, guid: e0e4e5e1f4707e946bd78fd06cdd2991, type: 3}
-    cost: 300
 --- !u!4 &1458677316 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6246264925069764735, guid: d75a05192a778824a93b8ad79ccdeb7e, type: 3}
@@ -3515,38 +3469,38 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 415990013}
     m_Modifications:
-    - target: {fileID: 4330682215188297424, guid: 5a9330bc6b9c3594594a793729fd8a41, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+    - target: {fileID: 3160059830332752483, guid: 5a9330bc6b9c3594594a793729fd8a41, type: 3}
+      propertyPath: offset.y
+      value: 0.7
       objectReference: {fileID: 0}
-    - target: {fileID: 4330682215188297424, guid: 5a9330bc6b9c3594594a793729fd8a41, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
-      value: 1
+    - target: {fileID: 3160059830332752483, guid: 5a9330bc6b9c3594594a793729fd8a41, type: 3}
+      propertyPath: layer.m_Bits
+      value: 128
       objectReference: {fileID: 0}
+    - target: {fileID: 3160059830332752483, guid: 5a9330bc6b9c3594594a793729fd8a41, type: 3}
+      propertyPath: offsetOnDrag.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3160059830332752483, guid: 5a9330bc6b9c3594594a793729fd8a41, type: 3}
+      propertyPath: offsetOnDrag.z
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3160059830332752483, guid: 5a9330bc6b9c3594594a793729fd8a41, type: 3}
+      propertyPath: offsetOnBuild.y
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3160059830332752483, guid: 5a9330bc6b9c3594594a793729fd8a41, type: 3}
+      propertyPath: buildZoneLayer.m_Bits
+      value: 256
+      objectReference: {fileID: 0}
+    - target: {fileID: 3160059830332752483, guid: 5a9330bc6b9c3594594a793729fd8a41, type: 3}
+      propertyPath: turretBlueprint.prefab
+      value: 
+      objectReference: {fileID: 6682875402745529676, guid: 32118642c6e42dd428a08e56f6157116, type: 3}
     - target: {fileID: 4330682215188297424, guid: 5a9330bc6b9c3594594a793729fd8a41, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 415990017}
-    - target: {fileID: 4330682215188297424, guid: 5a9330bc6b9c3594594a793729fd8a41, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4330682215188297424, guid: 5a9330bc6b9c3594594a793729fd8a41, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SelectStandardTurret
-      objectReference: {fileID: 0}
-    - target: {fileID: 4330682215188297424, guid: 5a9330bc6b9c3594594a793729fd8a41, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: Shop, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 7717643147039674610, guid: 5a9330bc6b9c3594594a793729fd8a41, type: 3}
-      propertyPath: prefab3DModel
-      value: 
-      objectReference: {fileID: 6682875402745529676, guid: 32118642c6e42dd428a08e56f6157116, type: 3}
-    - target: {fileID: 7717643147039674610, guid: 5a9330bc6b9c3594594a793729fd8a41, type: 3}
-      propertyPath: positionOffset.y
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8785253907901116632, guid: 5a9330bc6b9c3594594a793729fd8a41, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -3631,14 +3585,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: StandardTurretItem
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 7717643147039674610, guid: 5a9330bc6b9c3594594a793729fd8a41, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 8790275702235680435, guid: 5a9330bc6b9c3594594a793729fd8a41, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 327865595}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5a9330bc6b9c3594594a793729fd8a41, type: 3}
 --- !u!1001 &8774487908852210053
 PrefabInstance:
