@@ -17,7 +17,7 @@ public class DragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
     }
     public void OnBeginDrag(PointerEventData eventData)
     {
-        BuildManager.instance.SetTurretToBuild(turretBlueprint);
+        TurretCatalog.instance.SetTurretToBuild(turretBlueprint);
         dragObject = Instantiate(turretBlueprint.prefab);
         dragObject.transform.position = GetWorldPosition(eventData) + offsetOnDrag;
     }

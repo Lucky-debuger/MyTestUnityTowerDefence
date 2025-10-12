@@ -17,13 +17,11 @@ public class Shop : MonoBehaviour
     }
     public void SelectStandardTurret()
     {
-        BuildManager.instance.SetTurretToBuild(standartTurret);
-        Debug.Log(2);
+        TurretCatalog.instance.SetTurretToBuild(standartTurret);
     }
 
     public void SelectMissileLauncher()
     {
-        BuildManager.instance.SetTurretToBuild(missileLauncher);
-        Debug.Log(1);
+        TurretCatalog.instance.SetTurretToBuild(missileLauncher);
     }
 }
