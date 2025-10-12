@@ -2,4 +2,4 @@
 ![alt text](Diagrams/Diagram_of_classes_for_turrets_shop.png)
 <img width="1287" height="2004" alt="Diagram of actions for the purchase" src="https://github.com/user-attachments/assets/2d07815f-3a5f-48fa-b8e0-e42f9f58b91f" />
 
-<img width="601" height="594" alt="diagram_of_classes_for_turret_shop drawio" src="https://github.com/user-attachments/assets/b9e198ea-909c-43c4-a71b-2aab16cecffe" />
+![diagram_of_classes_for_turret_shop drawio](https://github.com/user-attachments/assets/20290c07-2e7a-4b7a-b64e-e79138a2a65a)
