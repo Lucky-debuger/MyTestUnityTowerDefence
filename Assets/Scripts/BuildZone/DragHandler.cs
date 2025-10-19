@@ -10,6 +10,9 @@ public class DragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
     public TurretBlueprint turretBlueprint;
     private Camera mainCamera;
     private GameObject dragObject;
+    private GameObject dragablePreview;
+    [SerializeField] private GameObject turretPreview;
+    
 
     void Start()
     {
@@ -18,14 +21,14 @@ public class DragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
     public void OnBeginDrag(PointerEventData eventData)
     {
         TurretCatalog.instance.SetTurretToBuild(turretBlueprint);
-        dragObject = Instantiate(turretBlueprint.prefab);
-        dragObject.transform.position = GetWorldPosition(eventData) + offsetOnDrag;
+        dragablePreview = Instantiate(turretPreview);
+        dragablePreview.transform.position = GetWorldPosition(eventData) + offsetOnDrag;
     }
 
     public void OnDrag(PointerEventData eventData)
     {
         Vector3 worldPos = GetWorldPosition(eventData);
-        dragObject.transform.position = worldPos + offsetOnDrag;
+        dragablePreview.transform.position = worldPos + offsetOnDrag;
 
         BuildZone buildZone = GetBuildZoneAtPosition(worldPos);
         BuildController.Instance.OnBuildZoneHover(buildZone);
@@ -33,7 +36,7 @@ public class DragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        Destroy(dragObject);
+        Destroy(dragablePreview);
     }
 
     private Vector3 GetWorldPosition(PointerEventData eventData) // Разобраться, как работает

@@ -26,6 +26,7 @@ public class TurretCatalog : MonoBehaviour
     public void SetTurretToBuild(TurretBlueprint turretBlueprint) // Через этот метод я передаю туррель для стоительства TurretCatalog?
     {
         turretToBuild = turretBlueprint;
+        BuildSystem.Instance.SetSelectedBlueprint(turretToBuild);
     }
 
     public TurretBlueprint GetTurretToBuild()
