@@ -7,7 +7,7 @@ public class BuildZone : MonoBehaviour
     public GameObject turret;
 
     [Header("References")]
-    private BuildZoneHighlighter highlighter;
+    public BuildZoneHighlighter highlighter;
 
     public bool IsEmpty => turret == null;
     // Полная запись

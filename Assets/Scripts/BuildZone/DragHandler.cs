@@ -30,13 +30,39 @@ public class DragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
         Vector3 worldPos = GetWorldPosition(eventData);
         dragablePreview.transform.position = worldPos + offsetOnDrag;
 
-        BuildZone buildZone = GetBuildZoneAtPosition(worldPos);
-        BuildController.Instance.OnBuildZoneHover(buildZone);
+        BuildZone buildZone = BuildSystem.Instance.GetBuildZoneAtPosition(worldPos, buildZoneLayer);
+
+        if (buildZone == null)
+        {
+            if (BuildSystem.Instance.currentZone != null)
+            {
+                BuildSystem.Instance.ResetBuildZone();
+            }
+            return;
+        }
+
+        if (buildZone != BuildSystem.Instance.currentZone)
+        {
+            BuildSystem.Instance.ResetBuildZone();
+        }
+
+        if (buildZone != null)
+        {
+            BuildSystem.Instance.OnBuildZoneHover(buildZone);
+        }
+
+
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
+        Vector3 worldPos = GetWorldPosition(eventData);
+        dragablePreview.transform.position = worldPos + offsetOnDrag;
+        BuildZone buildZone = BuildSystem.Instance.GetBuildZoneAtPosition(worldPos, buildZoneLayer);
+
+        BuildSystem.Instance.TryBuild(buildZone);
         Destroy(dragablePreview);
+        BuildSystem.Instance.ResetBuildZone();
     }
 
     private Vector3 GetWorldPosition(PointerEventData eventData) // Разобраться, как работает
@@ -50,16 +76,5 @@ public class DragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
         return Vector3.zero;
     }
 
-    private BuildZone GetBuildZoneAtPosition(Vector3 position)
-    {
-        RaycastHit hit;
-        Debug.DrawRay(position, Vector3.down, Color.red, 2f);
-        if (Physics.Raycast(position, Vector3.down, out hit, 10f, buildZoneLayer))
-        {
-            Debug.Log("Я навёлся на BuildZone");
-            return hit.collider.GetComponent<BuildZone>();
-        }
-        Debug.Log("Я не навёлся на BuildZone");
-        return null;
-    }
+
 }
