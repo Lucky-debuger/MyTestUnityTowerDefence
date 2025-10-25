@@ -23,15 +23,16 @@ public class BuildSystem : MonoBehaviour
         selectBlueprint = blueprint;
     }
 
-    public void TryBuild(BuildZone buildZone)
+    public void TryBuild(BuildZone buildZone, Vector3 offsetOnBuild = default)
     {
+
         if (!CanBuild(buildZone))
         {
             CancelBuild();
             return;
         }
 
-        BuildTurret(buildZone, selectBlueprint);
+        BuildTurret(buildZone, selectBlueprint, offsetOnBuild);
 
     }
 
@@ -86,8 +87,8 @@ public class BuildSystem : MonoBehaviour
         return null;
     }
     
-    private void BuildTurret(BuildZone buildZone, TurretBlueprint turretBlueprint)
+    private void BuildTurret(BuildZone buildZone, TurretBlueprint turretBlueprint, Vector3 offsetOnBuild = default)
     {
-        buildZone.turret = Instantiate(turretBlueprint.prefab, buildZone.transform.position, Quaternion.identity);
+        buildZone.turret = Instantiate(turretBlueprint.prefab, buildZone.transform.position + offsetOnBuild, turretBlueprint.prefab.transform.rotation);
     }
 }

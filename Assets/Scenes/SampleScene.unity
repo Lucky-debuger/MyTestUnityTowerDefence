@@ -1581,7 +1581,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3160059830332752483, guid: 5a9330bc6b9c3594594a793729fd8a41, type: 3}
       propertyPath: offsetOnBuild.y
-      value: 0.3
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 3160059830332752483, guid: 5a9330bc6b9c3594594a793729fd8a41, type: 3}
       propertyPath: buildZoneLayer.m_Bits
@@ -1869,7 +1869,6 @@ GameObject:
   - component: {fileID: 827651960}
   - component: {fileID: 827651962}
   - component: {fileID: 827651963}
-  - component: {fileID: 827651964}
   - component: {fileID: 827651965}
   m_Layer: 0
   m_Name: GameMaster
@@ -1940,21 +1939,6 @@ MonoBehaviour:
     type: 
     prefab: {fileID: 0}
     cost: 0
---- !u!114 &827651964
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 827651959}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 73875db5fffa25144b56b31a66fe5c01, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buildZoneLayer:
-    serializedVersion: 2
-    m_Bits: 256
 --- !u!114 &827651965
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1967,6 +1951,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94b3df491f88fad479f2b20b107b0c25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentZone: {fileID: 0}
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -3142,7 +3127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f7fea29a8ca52f42953de70e7c17271, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isWorking: 0
+  isWorking: 1
   waves:
   - {fileID: 11400000, guid: 7e8f5d4ee09defe4788562b8cf85a905, type: 2}
   - {fileID: 11400000, guid: 1344a5c1f70444c4e8b6ba0c5bf92662, type: 2}
@@ -3508,7 +3493,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3160059830332752483, guid: 5a9330bc6b9c3594594a793729fd8a41, type: 3}
       propertyPath: offsetOnBuild.y
-      value: 0.7
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3160059830332752483, guid: 5a9330bc6b9c3594594a793729fd8a41, type: 3}
       propertyPath: buildZoneLayer.m_Bits

@@ -60,7 +60,7 @@ public class DragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
         dragablePreview.transform.position = worldPos + offsetOnDrag;
         BuildZone buildZone = BuildSystem.Instance.GetBuildZoneAtPosition(worldPos, buildZoneLayer);
 
-        BuildSystem.Instance.TryBuild(buildZone);
+        BuildSystem.Instance.TryBuild(buildZone, offsetOnBuild);
         Destroy(dragablePreview);
         BuildSystem.Instance.ResetBuildZone();
     }
