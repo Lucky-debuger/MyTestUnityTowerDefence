@@ -5,6 +5,7 @@ public class BuildSystem : MonoBehaviour
 {
     public static BuildSystem Instance;
     public BuildZone currentZone;
+    public TurretBlueprint GetSelectedBlueprint { get { return selectBlueprint;  } }
     private TurretBlueprint selectBlueprint;
     
 
@@ -90,5 +91,6 @@ public class BuildSystem : MonoBehaviour
     private void BuildTurret(BuildZone buildZone, TurretBlueprint turretBlueprint, Vector3 offsetOnBuild = default)
     {
         buildZone.turret = Instantiate(turretBlueprint.prefab, buildZone.transform.position + offsetOnBuild, turretBlueprint.prefab.transform.rotation);
+        Shop.instance.BuySelectedTurret();
     }
 }

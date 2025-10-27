@@ -6,7 +6,7 @@ public class TurretCatalog : MonoBehaviour
 
     void Awake()
     {
-        if (instance!= null)
+        if (instance != null)
         {
             Debug.Log("More than one TurretCatalog in scene!");
             return;

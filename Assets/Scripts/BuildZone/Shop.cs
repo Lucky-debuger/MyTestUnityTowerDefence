@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Shop : MonoBehaviour
@@ -5,6 +6,7 @@ public class Shop : MonoBehaviour
     public static Shop instance;
     public TurretBlueprint standartTurret;
     public TurretBlueprint missileLauncher;
+
 
     void Awake()
     {
@@ -23,5 +25,14 @@ public class Shop : MonoBehaviour
     public void SelectMissileLauncher()
     {
         TurretCatalog.instance.SetTurretToBuild(missileLauncher);
+    }
+
+    public bool CanBuyTurret => PlayerStats.Money >= BuildSystem.Instance.GetSelectedBlueprint.cost;
+
+    public void BuySelectedTurret()
+    {
+        int turretCost = BuildSystem.Instance.GetSelectedBlueprint.cost;
+        PlayerStats.Money -= turretCost;
+        Debug.Log($"You buy a turret for a {turretCost} and now you have {PlayerStats.Money} money.");
     }
 }

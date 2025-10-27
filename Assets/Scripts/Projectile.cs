@@ -84,7 +84,6 @@ public class Projectile : MonoBehaviour
     void DealDamage(Transform enemy) // Почему именно Transform? 
     {
         enemy.root.GetComponent<Enemy>().TakeDamage(_damage);
-        Debug.Log("ААА");
         // Destroy(enemy.gameObject);
     }
 

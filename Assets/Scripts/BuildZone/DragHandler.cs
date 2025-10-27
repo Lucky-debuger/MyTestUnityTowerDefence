@@ -12,7 +12,7 @@ public class DragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
     private GameObject dragObject;
     private GameObject dragablePreview;
     [SerializeField] private GameObject turretPreview;
-    
+
 
     void Start()
     {
@@ -21,16 +21,23 @@ public class DragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
     public void OnBeginDrag(PointerEventData eventData)
     {
         TurretCatalog.instance.SetTurretToBuild(turretBlueprint);
+
+        if (!Shop.instance.CanBuyTurret)
+        {
+            Debug.Log("You haven't enough money to buy the turret!");
+            return;
+        }
+
         dragablePreview = Instantiate(turretPreview);
         dragablePreview.transform.position = GetWorldPosition(eventData) + offsetOnDrag;
     }
 
+
     public void OnDrag(PointerEventData eventData)
     {
-        Vector3 worldPos = GetWorldPosition(eventData);
-        dragablePreview.transform.position = worldPos + offsetOnDrag;
+        if (!Shop.instance.CanBuyTurret) return;
 
-        BuildZone buildZone = BuildSystem.Instance.GetBuildZoneAtPosition(worldPos, buildZoneLayer);
+        BuildZone buildZone = DragPreviewAndGetBuildZone(eventData);
 
         if (buildZone == null)
         {
@@ -50,19 +57,17 @@ public class DragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
         {
             BuildSystem.Instance.OnBuildZoneHover(buildZone);
         }
-
-
     }
+
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        Vector3 worldPos = GetWorldPosition(eventData);
-        dragablePreview.transform.position = worldPos + offsetOnDrag;
-        BuildZone buildZone = BuildSystem.Instance.GetBuildZoneAtPosition(worldPos, buildZoneLayer);
+        if (!Shop.instance.CanBuyTurret) return;
 
-        BuildSystem.Instance.TryBuild(buildZone, offsetOnBuild);
         Destroy(dragablePreview);
         BuildSystem.Instance.ResetBuildZone();
+        BuildZone buildZone = DragPreviewAndGetBuildZone(eventData);
+        BuildSystem.Instance.TryBuild(buildZone, offsetOnBuild);
     }
 
     private Vector3 GetWorldPosition(PointerEventData eventData) // Разобраться, как работает
@@ -76,5 +81,12 @@ public class DragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
         return Vector3.zero;
     }
 
+    private BuildZone DragPreviewAndGetBuildZone(PointerEventData eventData)
+    {
+        Vector3 worldPos = GetWorldPosition(eventData);
+        dragablePreview.transform.position = worldPos + offsetOnDrag;
+        BuildZone buildZone = BuildSystem.Instance.GetBuildZoneAtPosition(worldPos, buildZoneLayer);
+        return buildZone;
+    }
 
 }
