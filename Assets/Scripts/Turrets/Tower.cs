@@ -10,26 +10,47 @@ public abstract class Tower : MonoBehaviour
 
     protected float _nextAttackTime;
     protected Transform _currentTarget;
+
     public bool isAcitive = true;
+    public enum FireType {Projectile, Laser};
+    public FireType fireType = FireType.Projectile;
 
     void Update()
     {
-        if (!isAcitive)
-        {
-            return;
-        }
+        if (!isAcitive) return;
 
         RotateHead();
+
+        switch (fireType)
+        {
+            case FireType.Laser:
+                AttackLaser();
+                break;
+
+            case FireType.Projectile:
+                AttackProjectile();
+                break;
+        }
+
+
+    }
+
+    protected void AttackProjectile()
+    {
         if (Time.time >= _nextAttackTime)
         {
             FindTarget();
-            if (_currentTarget != null)
-            {
-                Attack();
-                _nextAttackTime = Time.time + 1f / _attackRate;
-            }
+            if (_currentTarget == null) return;
+            Attack();
+            _nextAttackTime = Time.time + 1f / _attackRate;
         }
-        
+    }
+
+    protected void AttackLaser()
+    {
+        FindTarget();
+        if (_currentTarget) Attack();
+        else DisableLaser();
     }
 
     protected virtual void FindTarget()
@@ -55,8 +76,12 @@ public abstract class Tower : MonoBehaviour
         }
     }
 
-    protected abstract void Attack();   
+    protected abstract void Attack();
     protected abstract void RotateHead();
+    protected virtual void DisableLaser()
+    {
+        
+    }
 }
 
 // protected — это модификатор доступа, который означает, что переменная или метод:
