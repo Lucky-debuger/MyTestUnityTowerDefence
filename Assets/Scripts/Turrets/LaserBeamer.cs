@@ -3,12 +3,18 @@ using UnityEngine;
 public class LaserBeamer : Tower
 {
     [SerializeField] float rotationSpeed;
+
+    [Header("Use bullet (default)")]
     [SerializeField] private Projectile _projectilePrefab;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+
+    [Header("Use laser")]
+    public bool useLaser = false;
+    public LineRenderer lineRenderer;
     protected override void Attack()
     {
-        Projectile projectile = Instantiate(_projectilePrefab, _projectileSpawnPoint.transform.position, Quaternion.identity);
-        projectile.Initialize(_currentTarget, _damage);
+        lineRenderer.SetPosition(0, _projectileSpawnPoint.position);
+        lineRenderer.SetPosition(1, _currentTarget.position);
+        Debug.Log(Time.time.ToString() + " attack!");
     }
 
     protected override void RotateHead()

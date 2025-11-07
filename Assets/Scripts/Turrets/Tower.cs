@@ -2,6 +2,7 @@ using UnityEngine;
 
 public abstract class Tower : MonoBehaviour
 {
+    [Header("General")]
     [SerializeField] protected float _attackRange = 10f;
     [SerializeField] protected float _attackRate = 1f;
     [SerializeField] protected int _damage = 10;
@@ -10,13 +11,7 @@ public abstract class Tower : MonoBehaviour
     protected float _nextAttackTime;
     protected Transform _currentTarget;
     public bool isAcitive = true;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
     void Update()
     {
         if (!isAcitive)
@@ -27,12 +22,12 @@ public abstract class Tower : MonoBehaviour
         RotateHead();
         if (Time.time >= _nextAttackTime)
         {
-        FindTarget();
-        if (_currentTarget != null)
-        {
-            Attack();
-            _nextAttackTime = Time.time + 1f / _attackRate;
-        }
+            FindTarget();
+            if (_currentTarget != null)
+            {
+                Attack();
+                _nextAttackTime = Time.time + 1f / _attackRate;
+            }
         }
         
     }
