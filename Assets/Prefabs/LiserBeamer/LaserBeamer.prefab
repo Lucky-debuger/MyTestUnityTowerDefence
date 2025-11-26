@@ -186,7 +186,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5902493840858231454}
   m_Layer: 0
-  m_Name: ProjectileSpawnPoint
+  m_Name: LaserPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -287,12 +287,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _attackRange: 10
-  _attackRate: 1
+  _attackRate: 150
   _damage: 25
   _projectileSpawnPoint: {fileID: 5902493840858231454}
   isAcitive: 1
   rotationSpeed: 10
   _projectilePrefab: {fileID: 2361381269806453104, guid: fe9ea278e970b064fab194d73a9c4b0d, type: 3}
+  useLaser: 0
+  lineRenderer: {fileID: 4713090530571619383}
+  impactEffect: {fileID: 8611656617902442442, guid: 790d192f860b57946a06561907fbe2cb, type: 3}
 --- !u!120 &4713090530571619383
 LineRenderer:
   serializedVersion: 2
