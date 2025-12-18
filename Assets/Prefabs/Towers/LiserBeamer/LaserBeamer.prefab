@@ -288,25 +288,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _attackRange: 10
-<<<<<<< HEAD:Assets/Prefabs/Towers/LiserBeamer/LaserBeamer.prefab
   _attackRate: 50
-=======
-  _attackRate: 150
->>>>>>> 1071e95743c89720d344a15d2a3a71a0e2dd3711:Assets/Prefabs/LiserBeamer/LaserBeamer.prefab
   _damage: 25
   _projectileSpawnPoint: {fileID: 5902493840858231454}
   isAcitive: 1
   fireType: 1
   rotationSpeed: 20
   _projectilePrefab: {fileID: 2361381269806453104, guid: fe9ea278e970b064fab194d73a9c4b0d, type: 3}
-<<<<<<< HEAD:Assets/Prefabs/Towers/LiserBeamer/LaserBeamer.prefab
   impactEffect: {fileID: 8954981664404441697}
   lineRenderer: {fileID: 4713090530571619383}
-=======
-  useLaser: 0
-  lineRenderer: {fileID: 4713090530571619383}
-  impactEffect: {fileID: 8611656617902442442, guid: 790d192f860b57946a06561907fbe2cb, type: 3}
->>>>>>> 1071e95743c89720d344a15d2a3a71a0e2dd3711:Assets/Prefabs/LiserBeamer/LaserBeamer.prefab
 --- !u!120 &4713090530571619383
 LineRenderer:
   serializedVersion: 2
