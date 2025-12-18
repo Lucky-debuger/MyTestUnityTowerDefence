@@ -300,7 +300,7 @@ MonoBehaviour:
   isMoving: 1
   isLoop: 0
   waypointIndex: 0
-  moveSpeed: 10
+  moveSpeed: 6
   rotationSpeed: 10
 --- !u!1 &763638121319229866
 GameObject:

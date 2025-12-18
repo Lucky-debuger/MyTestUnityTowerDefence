@@ -795,7 +795,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c1bd26b21564b474cac51b4edadbc6ec, type: 3}
   m_Name: 
@@ -919,7 +919,6 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
   - {fileID: 2100000, guid: b8056d4af7f6bad499254f67c66eb6a6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -2052,6 +2051,7 @@ GameObject:
   - component: {fileID: 827651962}
   - component: {fileID: 827651963}
   - component: {fileID: 827651965}
+  - component: {fileID: 827651966}
   m_Layer: 0
   m_Name: GameMaster
   m_TagString: Untagged
@@ -2133,6 +2133,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentZone: {fileID: 0}
+--- !u!114 &827651966
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 827651959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24ee07852edd2124f9d9f36ed8f170e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -2351,14 +2363,6 @@ PrefabInstance:
     - target: {fileID: 6291867650243259438, guid: f9f8078ecb736304396f2c7743481f5f, type: 3}
       propertyPath: m_Name
       value: LaserBeamer
-      objectReference: {fileID: 0}
-    - target: {fileID: 6330418254160321301, guid: f9f8078ecb736304396f2c7743481f5f, type: 3}
-      propertyPath: fireType
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6330418254160321301, guid: f9f8078ecb736304396f2c7743481f5f, type: 3}
-      propertyPath: rotationSpeed
-      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
