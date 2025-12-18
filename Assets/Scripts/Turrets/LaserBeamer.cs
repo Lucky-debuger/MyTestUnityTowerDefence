@@ -15,12 +15,17 @@ public class LaserBeamer : Tower
 
 
     public LineRenderer lineRenderer;
+<<<<<<< HEAD
 
+=======
+    [SerializeField] ParticleSystem impactEffect;
+>>>>>>> 1071e95743c89720d344a15d2a3a71a0e2dd3711
     protected override void Attack()
     {
         lineRenderer.enabled = true;
         lineRenderer.SetPosition(0, _projectileSpawnPoint.position);
         lineRenderer.SetPosition(1, _currentTarget.position);
+<<<<<<< HEAD
 
         if (!_isAttacking) 
         {
@@ -30,15 +35,29 @@ public class LaserBeamer : Tower
         
         MoveImpactEffect();
 
+=======
+>>>>>>> 1071e95743c89720d344a15d2a3a71a0e2dd3711
     }
 
     protected override void RotateHead()
     {
-        if (_currentTarget == null) return;
+        if (_currentTarget == null)
+        {
+            lineRenderer.enabled = false;
+            impactEffect.Stop();
+            return;
+        }
+        else
+        {
+            lineRenderer.enabled = true;
+            impactEffect.Play();
+        }
 
         GameObject partToRotate = transform.Find("PartToRotate").gameObject;
         Vector3 direction = _currentTarget.transform.position - partToRotate.transform.position;
         partToRotate.transform.rotation = Quaternion.Slerp(partToRotate.transform.rotation, Quaternion.LookRotation(direction), Time.deltaTime * rotationSpeed);
+        impactEffect.transform.position = _currentTarget.transform.position;
+        Debug.Log(impactEffect.transform.position);
     }
 
     protected override void DisableLaser()
