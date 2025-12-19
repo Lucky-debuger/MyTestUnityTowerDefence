@@ -47,10 +47,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _attackRange: 10
-  _attackRate: 1
+  _attackRate: 0.5
   _damage: 40
   _projectileSpawnPoint: {fileID: 2581263775081590191}
   isAcitive: 1
+  fireType: 0
   rotationSpeed: 10
   _projectilePrefab: {fileID: 4906199140068451233, guid: 1ef2d70c436fd9647a8a8391bc13e31a, type: 3}
 --- !u!1 &1171595109829015324

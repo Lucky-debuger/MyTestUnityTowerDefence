@@ -10,6 +10,7 @@ public class LaserBeamer : Tower
     [Header("Use bullet (default)")]
     [SerializeField] private Projectile _projectilePrefab;
     [SerializeField] private ParticleSystem impactEffect;
+    [SerializeField] private Light impactEffectLight;
 
     private bool _isAttacking = false;
 
@@ -55,11 +56,13 @@ public class LaserBeamer : Tower
     private void StartImpactEffect() // Разобраться, как работает
     {
         impactEffect.Play();
+        impactEffectLight.enabled = true;
     }
 
     private void StopImpactEffect()
     {
         impactEffect.Stop();
+        impactEffectLight.enabled = false;
     }
 
     private void MoveImpactEffect()
