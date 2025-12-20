@@ -297,6 +297,7 @@ MonoBehaviour:
   _projectilePrefab: {fileID: 2361381269806453104, guid: fe9ea278e970b064fab194d73a9c4b0d, type: 3}
   impactEffect: {fileID: 8954981664404441697}
   impactEffectLight: {fileID: 6708140806899528187}
+  damagePerSecond: 25
   lineRenderer: {fileID: 4713090530571619383}
 --- !u!120 &4713090530571619383
 LineRenderer:

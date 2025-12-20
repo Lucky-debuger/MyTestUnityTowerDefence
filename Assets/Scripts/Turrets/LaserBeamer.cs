@@ -1,6 +1,3 @@
-using NUnit.Framework;
-using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class LaserBeamer : Tower
@@ -11,6 +8,7 @@ public class LaserBeamer : Tower
     [SerializeField] private Projectile _projectilePrefab;
     [SerializeField] private ParticleSystem impactEffect;
     [SerializeField] private Light impactEffectLight;
+    [SerializeField] private float damagePerSecond; // Узнать больше о том, что такое рефрактор
 
     private bool _isAttacking = false;
 
@@ -30,6 +28,8 @@ public class LaserBeamer : Tower
         }
         
         MoveImpactEffect();
+        DealDamage();
+        
 
     }
 
@@ -37,7 +37,7 @@ public class LaserBeamer : Tower
     {
         if (_currentTarget == null) return;
 
-        GameObject partToRotate = transform.Find("PartToRotate").gameObject;
+        GameObject partToRotate = transform.Find("PartToRotate").gameObject; // Думаю, что это множно оптимезировать. В целом разобраться, как работает кэширование в Unity
         Vector3 direction = _currentTarget.transform.position - partToRotate.transform.position;
         partToRotate.transform.rotation = Quaternion.Slerp(partToRotate.transform.rotation, Quaternion.LookRotation(direction), Time.deltaTime * rotationSpeed);
     }
@@ -70,5 +70,10 @@ public class LaserBeamer : Tower
         Vector3 dir = _projectileSpawnPoint.position - _currentTarget.position;
         impactEffect.transform.position = _currentTarget.position + dir.normalized * 1f;
         impactEffect.transform.rotation = Quaternion.LookRotation(dir);
+    }
+
+    private void DealDamage()
+    {
+        _currentEnemyComponent.TakeDamage(damagePerSecond * Time.deltaTime); // Почему GetComponent является дорогой операцией?
     }
 }

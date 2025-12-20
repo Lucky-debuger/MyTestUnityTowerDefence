@@ -10,6 +10,7 @@ public abstract class Tower : MonoBehaviour
 
     protected float _nextAttackTime;
     protected Transform _currentTarget;
+    protected Enemy _currentEnemyComponent;
 
     public bool isAcitive = true;
     public enum FireType {Projectile, Laser};
@@ -71,6 +72,7 @@ public abstract class Tower : MonoBehaviour
                 // _currentTarget = enemyCollider.GetComponentInParent<Enemy>();
                 // _currentTarget = enemyCollider.transform.root.GetComponent<Enemy>();
                 _currentTarget = enemyCollider.transform;
+                _currentEnemyComponent = _currentTarget.root.GetComponent<Enemy>();
             }
                
         }
