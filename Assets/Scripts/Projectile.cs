@@ -13,13 +13,7 @@ public class Projectile : MonoBehaviour
         _target = target;
         _damage = damage;
     }
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
 
-    }
-
-    // Update is called once per frame
     void Update()
     {
         if (_target == null)
@@ -28,7 +22,6 @@ public class Projectile : MonoBehaviour
             return;
         }
         MoveToEnemy();
-        // Debug.Log(_target);
 
         if (Vector3.Distance(transform.position, _target.transform.position) < 0.3f)
         {
@@ -66,11 +59,6 @@ public class Projectile : MonoBehaviour
     {
         Collider[] colliders = Physics.OverlapSphere(transform.position, explosionRadius);
         
-        // for (int i = 0; i < colliders.Length; i++)
-        // {
-        //     Debug.Log(colliders[i].transform.root.tag); // Почему всё получать через Transform?
-        // }
-
         foreach (Collider collider in colliders)
         {
 
@@ -81,13 +69,12 @@ public class Projectile : MonoBehaviour
         }
     }
 
-    void DealDamage(Transform enemy) // Почему именно Transform? 
+    void DealDamage(Transform enemy)
     {
         enemy.root.GetComponent<Enemy>().TakeDamage(_damage);
-        // Destroy(enemy.gameObject);
     }
 
-    void OnDrawGizmosSelected() // Чем OnDrawGizmosSelected отличается от OnDrawGizmos?
+    void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, explosionRadius);

@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 using TMPro;
 using System;
+using UnityEngine.SceneManagement;
 
 public class WaveSpawner : MonoBehaviour
 {
@@ -15,6 +16,24 @@ public class WaveSpawner : MonoBehaviour
     private int _waveIndex = 0;
     
     public TextMeshProUGUI waveCountdownText;
+
+    void Awake()
+    {
+        ResetStaticVariables();
+
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        ResetStaticVariables();
+    }
+
+    private void ResetStaticVariables()
+    {
+        isSpawning = true;
+        EnemiesAlive = 0;
+    }
 
     void Update()
     {

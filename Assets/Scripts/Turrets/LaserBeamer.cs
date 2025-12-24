@@ -29,15 +29,13 @@ public class LaserBeamer : Tower
         
         MoveImpactEffect();
         DealDamage();
-        
-
     }
 
     protected override void RotateHead()
     {
         if (_currentTarget == null) return;
 
-        GameObject partToRotate = transform.Find("PartToRotate").gameObject; // Думаю, что это множно оптимезировать. В целом разобраться, как работает кэширование в Unity
+        GameObject partToRotate = transform.Find("PartToRotate").gameObject; // Думаю, что это множно оптимизировать. В целом разобраться, как работает кэширование в Unity
         Vector3 direction = _currentTarget.transform.position - partToRotate.transform.position;
         partToRotate.transform.rotation = Quaternion.Slerp(partToRotate.transform.rotation, Quaternion.LookRotation(direction), Time.deltaTime * rotationSpeed);
     }
@@ -75,5 +73,7 @@ public class LaserBeamer : Tower
     private void DealDamage()
     {
         _currentEnemyComponent.TakeDamage(damagePerSecond * Time.deltaTime); // Почему GetComponent является дорогой операцией?
+        _currentTarget.root.GetComponent<WaypointManager>().ApplySlow(0.5f, 1f);
     }
+
 }
