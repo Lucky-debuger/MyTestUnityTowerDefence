@@ -79,8 +79,8 @@ Light:
   serializedVersion: 11
   m_Type: 2
   m_Color: {r: 1, g: 0.34612325, b: 0, a: 1}
-  m_Intensity: 100
-  m_Range: 10
+  m_Intensity: 130
+  m_Range: 4.98918
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -188,7 +188,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3713944774296824030, guid: d408734b1adfaaf488a33bda8695a130, type: 3}
       propertyPath: ShapeModule.radius.value
-      value: 1.5
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 4391141633179357407, guid: d408734b1adfaaf488a33bda8695a130, type: 3}
       propertyPath: m_Name
@@ -254,7 +254,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3713944774296824030, guid: 2e5b7c731a2eda14c96ea34b82991f33, type: 3}
       propertyPath: ShapeModule.radius.value
-      value: 1.5
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 4391141633179357407, guid: 2e5b7c731a2eda14c96ea34b82991f33, type: 3}
       propertyPath: m_Name

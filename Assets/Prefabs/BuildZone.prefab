@@ -10,9 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 6246264925069764735}
   - component: {fileID: 6769424467390646169}
-  - component: {fileID: 5129199438591298364}
   - component: {fileID: 7269331876796419417}
   - component: {fileID: 9034014246226081643}
+  - component: {fileID: 494044712437116623}
+  - component: {fileID: 6936546657009997563}
   m_Layer: 8
   m_Name: BuildZone
   m_TagString: BuildZone
@@ -56,22 +57,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &5129199438591298364
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1456024485604076539}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 437caa2e4925e014aaa9b4fe6f40000c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  positionOffset: {x: 0, y: 0.75, z: 0}
-  validColor: {r: 0, g: 1, b: 0, a: 0.3}
-  invalidColor: {r: 1, g: 0, b: 0, a: 0.3}
-  meshRend: {fileID: 0}
 --- !u!33 &7269331876796419417
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -125,3 +110,31 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &494044712437116623
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1456024485604076539}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8405a42812f47f4f92b9a7719db4cd0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  turret: {fileID: 0}
+--- !u!114 &6936546657009997563
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1456024485604076539}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11ecaaa64edbbdf469efac67c62f716e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  normalColor: {r: 1, g: 1, b: 1, a: 0.1}
+  validColor: {r: 0, g: 1, b: 0, a: 0.3}
+  invalidColor: {r: 1, g: 0, b: 0, a: 0.3}

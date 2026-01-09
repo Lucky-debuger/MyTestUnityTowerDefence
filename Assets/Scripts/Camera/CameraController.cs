@@ -1,8 +1,5 @@
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
-using UnityEngine.Rendering;
-using UnityEngine.Rendering.Universal;
-using UnityEngine.SocialPlatforms.Impl;
+
 
 public class CameraController : MonoBehaviour
 {
@@ -22,7 +19,7 @@ public class CameraController : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown("t"))
+        if (Input.GetKeyDown("t")) // Old Inpue System
         {
             doMovement = !doMovement;
         }
