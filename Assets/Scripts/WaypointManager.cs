@@ -43,7 +43,6 @@ public class WaypointManager : MonoBehaviour
         : Vector3.zero;
         
         Vector3 finalDirection = waypointDirection  + (avoidanceCorrection * avoidanceWeight); // Что такое вес и почему он так называется?
-        Debug.Log(avoidanceCorrection);
         // if (finalDirection.magnitude > 0.1f) // Что это и зачем?
         // {
         _currentMoveSpeed = CalculateCurrentSpeed();

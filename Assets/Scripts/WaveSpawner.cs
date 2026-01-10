@@ -51,6 +51,13 @@ public class WaveSpawner : MonoBehaviour
         }
         _countdown -= Time.deltaTime;
         waveCountdownText.text = "New wave in: " + Math.Round(_countdown).ToString();
+
+        // УБРАТЬ!!!
+        if (!spawnPoint)
+        {
+            spawnPoint = GameObject.Find("SpawnPoint").transform;
+        }
+        
     }
 
     IEnumerator SpawnWave()
