@@ -13,7 +13,7 @@ public class Wave : ScriptableObject
     {
         public GameObject enemyPrefab;
         public int count;
-        public int rate;
+        public float spawnRate;
     }
     public EnemyGroup[] enemyGroups;
  }

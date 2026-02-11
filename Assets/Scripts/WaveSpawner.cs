@@ -2,7 +2,6 @@ using System.Collections;
 using UnityEngine;
 using TMPro;
 using System;
-using UnityEngine.SceneManagement;
 
 public class WaveSpawner : MonoBehaviour
 {
@@ -17,23 +16,6 @@ public class WaveSpawner : MonoBehaviour
     
     public TextMeshProUGUI waveCountdownText;
 
-    void Awake()
-    {
-        ResetStaticVariables();
-
-        SceneManager.sceneLoaded += OnSceneLoaded;
-    }
-
-    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-    {
-        ResetStaticVariables();
-    }
-
-    private void ResetStaticVariables()
-    {
-        isSpawning = true;
-        EnemiesAlive = 0;
-    }
 
     void Update()
     {
@@ -50,26 +32,19 @@ public class WaveSpawner : MonoBehaviour
             _countdown = timeBetweenWaves;
         }
         _countdown -= Time.deltaTime;
-        waveCountdownText.text = "New wave in: " + Math.Round(_countdown).ToString();
-
-        // УБРАТЬ!!!
-        if (!spawnPoint)
-        {
-            spawnPoint = GameObject.Find("SpawnPoint").transform;
-        }
-        
+        waveCountdownText.text = "New wave in: " + Math.Round(_countdown).ToString(); // TODO Break it down into logic and visual. Is it worth doing this?
     }
 
     IEnumerator SpawnWave()
     {
         Wave wave = waves[_waveIndex];
-        // Debug.Log(waves[0].enemyGroups[1].enemyPrefab.name);
+
         for (int j = 0; j < wave.enemyGroups.Length; j++)
         {
             for (int i = 0; i < wave.enemyGroups[j].count; i++)
             {
                 SpawnEnemy(wave.enemyGroups[j].enemyPrefab);
-                yield return new WaitForSeconds(1f / waves[0].enemyGroups[j].rate);
+                yield return new WaitForSeconds(waves[0].enemyGroups[j].spawnRate);
             }
         }
 
