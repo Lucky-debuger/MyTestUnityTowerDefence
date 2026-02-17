@@ -9,14 +9,12 @@ public class LevelController : MonoBehaviour
 
     [SerializeField] private LevelConfig config;
     [SerializeField] private Transform spawnPoint;
-
+    
     private WaveSpawner waveSpawner;
 
-    private void Start()
+    public void Initialize(WaveSpawner waveSpawner)
     {
-        waveSpawner = FindAnyObjectByType<WaveSpawner>(); // [ ] Should I leave find? Yes
-        waveSpawner.waves = config.Waves;
-        waveSpawner.spawnPoint = spawnPoint;
-        waveSpawner.isWorking = true; // [ ] Лучше сделать через метод? Yes you should refactor this
+        this.waveSpawner = waveSpawner;
+        waveSpawner.StartSpawning(config.Waves, spawnPoint);
     }
 }

@@ -8,36 +8,11 @@ public class Enemy : MonoBehaviour
     public GameObject prefab;
     public string enemyType;
 
-
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    public void Initialize()
-    {
-
-    }
-
     void Start()
     {
         _currentHealth = _maxHealth;
         healthBar.SetMaxHealth(_maxHealth);
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
-    // public void TakeDamage(InputAction.CallbackContext context)
-    // {
-    //     // Debug.Log("Current phase:" + context.phase);
-    //     if (context.started)
-    //     {
-    //         _currentHealth -= 20;
-    //         healthBar.SetHealth(_currentHealth);
-    //     }
-
-    // }
 
     public void TakeDamage(float damage)
     {
@@ -53,9 +28,4 @@ public class Enemy : MonoBehaviour
         Destroy(gameObject);
         WaveSpawner.EnemiesAlive--;
     }
-
-    // private void Die()
-    // {
-    //     EnemyFactory.Instance.ReturnToPool(gameObject, enemyType);
-    // }
 }

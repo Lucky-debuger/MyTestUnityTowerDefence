@@ -7,6 +7,4 @@ public class Destroy : MonoBehaviour
     {
         DontDestroyOnLoad(this);
     }
-
-    
 }

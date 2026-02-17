@@ -2,12 +2,8 @@ using UnityEngine;
 
 [CreateAssetMenu(fileName = "NewWave", menuName = "CreateWave")]
 
-
 public class Wave : ScriptableObject
 {
-    // public GameObject enemy;
-    // public int count;
-    // public float rate;
     [System.Serializable]
     public class EnemyGroup
     {
@@ -16,4 +12,4 @@ public class Wave : ScriptableObject
         public float spawnRate;
     }
     public EnemyGroup[] enemyGroups;
- }
+}

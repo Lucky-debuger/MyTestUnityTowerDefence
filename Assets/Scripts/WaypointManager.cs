@@ -96,7 +96,6 @@ public class WaypointManager : MonoBehaviour
         if (distance <= 0.4f)
         {
             waypointIndex++;
-            Debug.Log(waypointIndex);
 
             if (isLoop && waypointIndex >= wayPoints.Count)
             {

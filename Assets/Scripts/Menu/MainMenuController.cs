@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MainMenuController : MonoBehaviour
 {
@@ -7,9 +8,19 @@ public class MainMenuController : MonoBehaviour
 
     private GameObject _currentSreen;
 
-    private void Awake() // Возможно стоит заменить на Initialize
+    private void Awake()
     {
         _currentSreen = menuScreen;
+    }
+
+    public  void LoadLevel(string levelName)
+    {
+        if (!SceneManager.GetSceneByName("Game").isLoaded)
+        {
+            SceneManager.LoadScene("Game");
+        }
+
+        SceneManager.LoadSceneAsync(levelName, LoadSceneMode.Additive);
     }
 
     public void SwitchSсreen(GameObject newScreen)
