@@ -17,12 +17,11 @@ public class GameMaster : MonoBehaviour
         {
             GameOver();
         }
-        
     }
 
     private void GameOver()
     {
-        WaveSpawner.isSpawning = false;
+        // TODO Add GameOver
         isGameEnd = true;
         isVisibleGameOverUI = true;
         gameOverUI.SetActive(isVisibleGameOverUI);

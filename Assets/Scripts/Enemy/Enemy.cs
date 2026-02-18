@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
@@ -7,6 +8,8 @@ public class Enemy : MonoBehaviour
     private float _currentHealth;
     public GameObject prefab;
     public string enemyType;
+
+    public event Action OnDied;
 
     void Start()
     {
@@ -25,7 +28,9 @@ public class Enemy : MonoBehaviour
     }
     public void Die()
     {
+        OnDied?.Invoke();
+        OnDied = null;
         Destroy(gameObject);
-        WaveSpawner.EnemiesAlive--;
+        // WaveSpawner.EnemiesAlive--;
     }
 }

@@ -2,35 +2,51 @@ using UnityEngine;
 using GameConstant;
 using UnityEngine.SceneManagement;
 
-public class CompositionRoot : MonoBehaviour
+namespace GameConstant
 {
-    [SerializeField] private WaveSpawner waveSpawner;
-    [SerializeField] private GameView gameView;
-    [SerializeField] private LevelManager levelManager;
-
-    private void Awake()
+    public class CompositionRoot : MonoBehaviour
     {
-        gameView.Initialize(waveSpawner);
-        waveSpawner.OnWavesFinished += levelManager.OnLevelCompleted;
-    }
+        [SerializeField] private WaveSpawner waveSpawner;
+        [SerializeField] private GameView gameView;
+        [SerializeField] private LevelManager levelManager;
 
-    private void OnEnable()
-    {
-        SceneManager.sceneLoaded += OnSceneLoaded;
-    }
-
-    private void OnDisable()
-    {
-        SceneManager.sceneLoaded -= OnSceneLoaded;
-        waveSpawner.OnWavesFinished -= levelManager.OnLevelCompleted;
-    }
-
-    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-    {
-        LevelController levelController = FindAnyObjectByType<LevelController>(); // TODO Study Zenject. Do I have to search anyway?
-        if (levelController != null)
+        private void Awake()
         {
-            levelController.Initialize(waveSpawner);
+            gameView.Initialize(waveSpawner);
+            waveSpawner.OnWavesFinished += levelManager.OnLevelCompleted;
+        }
+
+        private void OnEnable()
+        {
+            SceneManager.sceneLoaded += OnSceneLoaded;
+        }
+
+        private void OnDisable()
+        {
+            SceneManager.sceneLoaded -= OnSceneLoaded;
+            waveSpawner.OnWavesFinished -= levelManager.OnLevelCompleted;
+        }
+
+        private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+        {
+            LevelController levelController = FindAnyObjectByType<LevelController>(); // TODO Study Zenject. Do I have to search anyway?
+            TurretManager turretManager = FindAnyObjectByType<TurretManager>();
+            
+            if (levelController != null)
+            {
+                levelController.Initialize(waveSpawner);
+            }
+
+            if (turretManager != null)
+            {
+                BuildSystem.Instance.Initialize(turretManager);
+            }
+
+            if (levelManager != null)
+            {
+                BuildSystem.Instance.SetLevelManager(levelManager);
+            }
+
         }
     }
 }

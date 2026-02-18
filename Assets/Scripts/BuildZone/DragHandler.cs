@@ -8,15 +8,15 @@ public class DragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
     public LayerMask layer;
     public LayerMask buildZoneLayer;
     public TurretBlueprint turretBlueprint;
-    private Camera mainCamera;
-    private GameObject dragObject;
-    private GameObject dragablePreview;
+    private Camera _mainCamera;
+    private GameObject _dragablePreview;
+    
     [SerializeField] private GameObject turretPreview;
 
 
     void Start()
     {
-        mainCamera = Camera.main;
+        _mainCamera = Camera.main;
     }
     public void OnBeginDrag(PointerEventData eventData)
     {
@@ -28,8 +28,8 @@ public class DragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
             return;
         }
 
-        dragablePreview = Instantiate(turretPreview);
-        dragablePreview.transform.position = GetWorldPosition(eventData) + offsetOnDrag;
+        _dragablePreview = Instantiate(turretPreview);
+        _dragablePreview.transform.position = GetWorldPosition(eventData) + offsetOnDrag;
     }
 
 
@@ -59,20 +59,19 @@ public class DragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
         }
     }
 
-
     public void OnEndDrag(PointerEventData eventData)
     {
         if (!Shop.instance.CanBuyTurret) return;
 
-        Destroy(dragablePreview);
+        Destroy(_dragablePreview);
         BuildSystem.Instance.ResetBuildZone();
         BuildZone buildZone = DragPreviewAndGetBuildZone(eventData);
         BuildSystem.Instance.TryBuild(buildZone, offsetOnBuild);
     }
 
-    private Vector3 GetWorldPosition(PointerEventData eventData) // Разобраться, как работает
+    private Vector3 GetWorldPosition(PointerEventData eventData) // [ ] Разобраться, как работает
     {
-        Ray ray = mainCamera.ScreenPointToRay(eventData.position);
+        Ray ray = _mainCamera.ScreenPointToRay(eventData.position);
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit, 100, layer))
         {
@@ -84,7 +83,7 @@ public class DragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
     private BuildZone DragPreviewAndGetBuildZone(PointerEventData eventData)
     {
         Vector3 worldPos = GetWorldPosition(eventData);
-        dragablePreview.transform.position = worldPos + offsetOnDrag;
+        _dragablePreview.transform.position = worldPos + offsetOnDrag;
         BuildZone buildZone = BuildSystem.Instance.GetBuildZoneAtPosition(worldPos, buildZoneLayer);
         return buildZone;
     }

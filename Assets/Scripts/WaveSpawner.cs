@@ -2,31 +2,27 @@ using System.Collections;
 using UnityEngine;
 using TMPro;
 using System;
+
+
 public class WaveSpawner : MonoBehaviour
 {
     [SerializeField] private float timeBetweenWaves = 5f;
     [SerializeField] private TextMeshProUGUI waveCountdownText;
-    
+
     private float _countdown = 2f; // Time before start the first wave
     private int _waveIndex = 0;
     private bool _isWorking = false;
     private Wave[] _waves;
     private Transform _spawnPoint;
+    private int _enemiesAlive = 0;
 
-    public static bool isSpawning = true; // TODO remove static
-    public static int EnemiesAlive = 0;
-
-    public event Action<float> OnCountdown; // [ ] Is it a good name?
+    public event Action<float> OnCountdown;
     public event Action OnWavesFinished;
 
     private void Update()
     {
-        if (!_isWorking) return;
-        
-        if (EnemiesAlive > 0 || !isSpawning)
-        {
-            return;
-        }
+
+        if (!_isWorking || _enemiesAlive > 0) return;
 
         if (_countdown <= 0)
         {
@@ -35,6 +31,7 @@ public class WaveSpawner : MonoBehaviour
         }
         _countdown -= Time.deltaTime;
         OnCountdown?.Invoke(_countdown);
+
     }
 
     private IEnumerator SpawnWave()
@@ -54,15 +51,15 @@ public class WaveSpawner : MonoBehaviour
 
         if (_waveIndex == _waves.Length)
         {
-            OnWavesFinished?.Invoke();
-            this.enabled = false;
+            _isWorking = false;
         }
     }
 
     private void SpawnEnemy(GameObject enemy)
     {
-        Instantiate(enemy, _spawnPoint.position, _spawnPoint.rotation);
-        EnemiesAlive++;
+        Enemy enemyInstance = Instantiate(enemy, _spawnPoint.position, _spawnPoint.rotation).GetComponent<Enemy>();
+        enemyInstance.OnDied += OnEnemyDied;
+        _enemiesAlive++;
     }
 
     public void Run()
@@ -76,6 +73,21 @@ public class WaveSpawner : MonoBehaviour
     {
         this._waves = waves;
         this._spawnPoint = spawnPoint;
-        this._isWorking = true;
+        _isWorking = true;
+    }
+
+    public void OnEnemyDied()
+    {
+        _enemiesAlive -= 1;
+        if (_enemiesAlive == 0 && _waveIndex == _waves.Length)
+        {
+            OnWavesFinished.Invoke();
+            ResetSpawner();
+        }
+    }
+
+    private void ResetSpawner()
+    {
+        _waveIndex = 0;
     }
 }

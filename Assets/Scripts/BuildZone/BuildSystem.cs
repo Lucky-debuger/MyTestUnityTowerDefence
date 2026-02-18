@@ -1,13 +1,25 @@
-using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BuildSystem : MonoBehaviour
 {
     public static BuildSystem Instance;
-    public BuildZone currentZone;
-    public TurretBlueprint GetSelectedBlueprint { get { return selectBlueprint;  } }
-    private TurretBlueprint selectBlueprint;
+    public BuildZone currentZone { get; private set; }
+    public TurretBlueprint GetSelectedBlueprint { get { return _selectBlueprint;  } }
+    private TurretBlueprint _selectBlueprint;
+    private TurretManager _turretManager;
+    private LevelManager _levelManager;
     
+
+    public void Initialize(TurretManager turretManager)
+    {
+        _turretManager = turretManager;
+    }
+
+    public void SetLevelManager(LevelManager levelManager)
+    {
+        _levelManager = levelManager;
+    }
 
     void Awake()
     {
@@ -21,7 +33,7 @@ public class BuildSystem : MonoBehaviour
 
     public void SetSelectedBlueprint(TurretBlueprint blueprint)
     {
-        selectBlueprint = blueprint;
+        _selectBlueprint = blueprint;
     }
 
     public void TryBuild(BuildZone buildZone, Vector3 offsetOnBuild = default)
@@ -33,7 +45,7 @@ public class BuildSystem : MonoBehaviour
             return;
         }
 
-        BuildTurret(buildZone, selectBlueprint, offsetOnBuild);
+        BuildTurret(buildZone, _selectBlueprint, offsetOnBuild);
 
     }
 
@@ -90,7 +102,17 @@ public class BuildSystem : MonoBehaviour
     
     private void BuildTurret(BuildZone buildZone, TurretBlueprint turretBlueprint, Vector3 offsetOnBuild = default)
     {
-        buildZone.turret = Instantiate(turretBlueprint.prefab, buildZone.transform.position + offsetOnBuild, turretBlueprint.prefab.transform.rotation);
+        
+        GameObject turret = Instantiate(
+            turretBlueprint.prefab, 
+            buildZone.transform.position + offsetOnBuild, 
+            turretBlueprint.prefab.transform.rotation
+            );
+
+        Scene levelScene = SceneManager.GetSceneByName(_levelManager.CurrentLevelName);
+        SceneManager.MoveGameObjectToScene(turret, levelScene);
+        buildZone.turret = turret;
+        _turretManager.RegisterTurret(turret);
         Shop.instance.BuySelectedTurret();
     }
 }

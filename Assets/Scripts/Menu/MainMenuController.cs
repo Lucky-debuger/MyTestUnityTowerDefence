@@ -13,14 +13,14 @@ public class MainMenuController : MonoBehaviour
         _currentSreen = menuScreen;
     }
 
-    public  void LoadLevel(string levelName)
+    public void LoadLevel(string levelName)
     {
         if (!SceneManager.GetSceneByName("Game").isLoaded)
         {
             SceneManager.LoadScene("Game");
         }
-
-        SceneManager.LoadSceneAsync(levelName, LoadSceneMode.Additive);
+        
+        // SceneManager.LoadSceneAsync(levelName, LoadSceneMode.Additive);
     }
 
     public void SwitchSсreen(GameObject newScreen)
