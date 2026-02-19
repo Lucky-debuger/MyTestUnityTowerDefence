@@ -3,11 +3,12 @@ using UnityEngine.EventSystems;
 
 public class DragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
-    public Vector3 offsetOnBuild;
-    public Vector3 offsetOnDrag;
-    public LayerMask layer;
-    public LayerMask buildZoneLayer;
-    public TurretBlueprint turretBlueprint;
+    [SerializeField] private Vector3 offsetOnBuild;
+    [SerializeField] private Vector3 offsetOnDrag;
+    [SerializeField] private LayerMask layer;
+    [SerializeField] private LayerMask buildZoneLayer;
+    [SerializeField] private TurretBlueprint turretBlueprint;
+
     private Camera _mainCamera;
     private GameObject _dragablePreview;
     
@@ -59,6 +60,7 @@ public class DragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
         }
     }
 
+
     public void OnEndDrag(PointerEventData eventData)
     {
         if (!Shop.instance.CanBuyTurret) return;
@@ -68,6 +70,7 @@ public class DragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
         BuildZone buildZone = DragPreviewAndGetBuildZone(eventData);
         BuildSystem.Instance.TryBuild(buildZone, offsetOnBuild);
     }
+
 
     private Vector3 GetWorldPosition(PointerEventData eventData)
     {
@@ -79,6 +82,7 @@ public class DragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
         }
         return Vector3.zero;
     }
+
 
     private BuildZone DragPreviewAndGetBuildZone(PointerEventData eventData)
     {

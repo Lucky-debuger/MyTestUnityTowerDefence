@@ -40,7 +40,6 @@ namespace GameConstant
 
             if (turretManager != null)
             {
-                Debug.Log("I found new turret manager");
                 BuildSystem.Instance.Initialize(turretManager);
             }
         }
