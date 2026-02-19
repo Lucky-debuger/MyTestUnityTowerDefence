@@ -29,6 +29,7 @@ namespace GameConstant
 
         private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
         {
+            BuildSystem.Instance.SetLevelManager(levelManager);
             LevelController levelController = FindAnyObjectByType<LevelController>(); // TODO Study Zenject. Do I have to search anyway?
             TurretManager turretManager = FindAnyObjectByType<TurretManager>();
             
@@ -39,14 +40,9 @@ namespace GameConstant
 
             if (turretManager != null)
             {
+                Debug.Log("I found new turret manager");
                 BuildSystem.Instance.Initialize(turretManager);
             }
-
-            if (levelManager != null)
-            {
-                BuildSystem.Instance.SetLevelManager(levelManager);
-            }
-
         }
     }
 }

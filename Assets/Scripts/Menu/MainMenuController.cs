@@ -5,16 +5,20 @@ public class MainMenuController : MonoBehaviour
 {
     [SerializeField] private GameObject menuScreen;
     [SerializeField] private GameObject selectLevelScreen;
+    [SerializeField] private GameState gameState;
 
-    private GameObject _currentSreen;
+    private GameObject _currentScreen;
 
     private void Awake()
     {
-        _currentSreen = menuScreen;
+        _currentScreen = menuScreen;
     }
 
     public void LoadLevel(string levelName)
     {
+        Debug.Log(levelName);
+        gameState.SetLevel(levelName);
+
         if (!SceneManager.GetSceneByName("Game").isLoaded)
         {
             SceneManager.LoadScene("Game");
@@ -25,10 +29,10 @@ public class MainMenuController : MonoBehaviour
 
     public void SwitchSсreen(GameObject newScreen)
     {
-        _currentSreen.SetActive(false);
+        _currentScreen.SetActive(false);
         newScreen.SetActive(true);
 
-        _currentSreen = newScreen;
+        _currentScreen = newScreen;
     }
 
     public void Exit()

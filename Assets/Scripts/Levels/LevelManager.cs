@@ -5,14 +5,15 @@ using UnityEngine.SceneManagement;
 public class LevelManager : MonoBehaviour
 {
     [SerializeField] private string[] levels;
-    private string _loadedLevelName;
+    [SerializeField] private GameState gameState;
+
     private int _currentLevelIndex = -1;
 
-    public string CurrentLevelName { get; private set; } // [ ] Do we need CurrentLevelName? 
+    public string CurrentLevelName { get; private set; }
 
     private void Start()
     {
-        StartLevel("Level_01");
+        StartLevel(gameState.selectedLevel);
     }
 
     public void StartLevel(string levelName)
@@ -20,29 +21,22 @@ public class LevelManager : MonoBehaviour
         CurrentLevelName = levelName;
         _currentLevelIndex = Array.IndexOf(levels, levelName);
         SceneManager.LoadSceneAsync(levelName, LoadSceneMode.Additive);
-        _loadedLevelName = levelName;
+        CurrentLevelName = levelName;
     }
 
     public void OnLevelCompleted()
     {
-        Debug.Log("Level completed!");
-
-        if (!string.IsNullOrEmpty(_loadedLevelName))
+        if (!string.IsNullOrEmpty(CurrentLevelName))
         {
-            SceneManager.UnloadSceneAsync(_loadedLevelName);
-            Debug.Log($"Unload: {_loadedLevelName}");
+            SceneManager.UnloadSceneAsync(CurrentLevelName);
         }
 
         if (_currentLevelIndex + 1 < levels.Length)
         {
             string nextLevel = levels[_currentLevelIndex + 1];
             SceneManager.LoadSceneAsync(nextLevel, LoadSceneMode.Additive);
-            _loadedLevelName = nextLevel;
-            Debug.Log($"Load scene: {_loadedLevelName}");
-        }
-        else
-        {
-            Debug.Log("All levels completed!");
+            CurrentLevelName = nextLevel;
+            CurrentLevelName = nextLevel;
         }
     }
 }

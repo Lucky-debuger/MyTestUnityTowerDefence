@@ -1100,7 +1100,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94b3df491f88fad479f2b20b107b0c25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentZone: {fileID: 0}
 --- !u!114 &538895981
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1209,6 +1208,7 @@ MonoBehaviour:
   levels:
   - Level_01
   - Level_02
+  gameState: {fileID: 11400000, guid: 1639cd68f255c4c40885f143818bdb65, type: 2}
 --- !u!1 &817625025
 GameObject:
   m_ObjectHideFlags: 0

@@ -69,7 +69,7 @@ public class DragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
         BuildSystem.Instance.TryBuild(buildZone, offsetOnBuild);
     }
 
-    private Vector3 GetWorldPosition(PointerEventData eventData) // [ ] Разобраться, как работает
+    private Vector3 GetWorldPosition(PointerEventData eventData)
     {
         Ray ray = _mainCamera.ScreenPointToRay(eventData.position);
         RaycastHit hit;

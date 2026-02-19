@@ -14,6 +14,7 @@ public class BuildSystem : MonoBehaviour
     public void Initialize(TurretManager turretManager)
     {
         _turretManager = turretManager;
+        Debug.Log('*');
     }
 
     public void SetLevelManager(LevelManager levelManager)
