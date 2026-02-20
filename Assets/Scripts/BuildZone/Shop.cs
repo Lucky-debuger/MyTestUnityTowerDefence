@@ -32,7 +32,6 @@ public class Shop : MonoBehaviour
     public void BuySelectedTurret()
     {
         int turretCost = BuildSystem.Instance.GetSelectedBlueprint.cost;
-        PlayerStats.Money -= turretCost;
-        Debug.Log($"You buy a turret for a {turretCost} and now you have {PlayerStats.Money} money.");
+        PlayerStats.TryBuy(turretCost);
     }
 }

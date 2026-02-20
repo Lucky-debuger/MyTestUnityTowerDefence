@@ -8,6 +8,5 @@ public class GameState : ScriptableObject
     public void SetLevel(string levelName)
     {
         selectedLevel = levelName;
-        Debug.Log($"SelectedLevel: {selectedLevel}");   
     }
 }

@@ -81,7 +81,7 @@ public class WaveSpawner : MonoBehaviour
         _enemiesAlive -= 1;
         if (_enemiesAlive == 0 && _waveIndex == _waves.Length)
         {
-            OnWavesFinished.Invoke();
+            OnWavesFinished?.Invoke();
             ResetSpawner();
         }
     }

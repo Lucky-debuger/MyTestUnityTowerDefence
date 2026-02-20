@@ -162,7 +162,7 @@ public class WaypointManager : MonoBehaviour
 
     public void EndPath()
     {
-        PlayerStats.Lives--;
+        PlayerStats.DicreaseLives(1);
         gameObject.GetComponent<Enemy>().Die();
     }
 

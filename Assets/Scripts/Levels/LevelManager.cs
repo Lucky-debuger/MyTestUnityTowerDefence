@@ -11,6 +11,8 @@ public class LevelManager : MonoBehaviour
 
     public string CurrentLevelName { get; private set; }
 
+    public event Action OnLevelCompleted;
+
     private void Start()
     {
         StartLevel(gameState.selectedLevel);
@@ -24,7 +26,7 @@ public class LevelManager : MonoBehaviour
         CurrentLevelName = levelName;
     }
 
-    public void OnLevelCompleted()
+    public void NextLevel()
     {
         if (!string.IsNullOrEmpty(CurrentLevelName))
         {
@@ -38,5 +40,7 @@ public class LevelManager : MonoBehaviour
             CurrentLevelName = nextLevel;
             CurrentLevelName = nextLevel;
         }
+
+        OnLevelCompleted?.Invoke();
     }
 }

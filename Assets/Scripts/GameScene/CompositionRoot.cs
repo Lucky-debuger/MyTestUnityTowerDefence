@@ -9,22 +9,25 @@ namespace GameConstant
         [SerializeField] private WaveSpawner waveSpawner;
         [SerializeField] private GameView gameView;
         [SerializeField] private LevelManager levelManager;
+        [SerializeField] private PlayerStats playerStats;
 
-        private void Awake()
+        private void Awake() // [ ] Need I here Awake and OnEnable?
         {
             gameView.Initialize(waveSpawner);
-            waveSpawner.OnWavesFinished += levelManager.OnLevelCompleted;
+            waveSpawner.OnWavesFinished += levelManager.NextLevel;
         }
 
         private void OnEnable()
         {
             SceneManager.sceneLoaded += OnSceneLoaded;
+            levelManager.OnLevelCompleted += playerStats.ResetLivesMoney;
         }
 
         private void OnDisable()
         {
             SceneManager.sceneLoaded -= OnSceneLoaded;
-            waveSpawner.OnWavesFinished -= levelManager.OnLevelCompleted;
+            levelManager.OnLevelCompleted += playerStats.ResetLivesMoney;
+            waveSpawner.OnWavesFinished -= levelManager.NextLevel;
         }
 
         private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
