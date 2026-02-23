@@ -10,24 +10,32 @@ namespace GameConstant
         [SerializeField] private GameView gameView;
         [SerializeField] private LevelManager levelManager;
         [SerializeField] private PlayerStats playerStats;
+        [SerializeField] private ViewCountdown viewCountdown;
+        [SerializeField] private View_PanelLevelCompleted view_PanelLevelCompleted;
 
-        private void Awake() // [ ] Need I here Awake and OnEnable?
-        {
-            gameView.Initialize(waveSpawner);
-            waveSpawner.OnWavesFinished += levelManager.NextLevel;
-        }
+        // private void Awake() // [ ] Need I here Awake and OnEnable? What better to use and when?
+        // {
+        //     gameView.Initialize(waveSpawner);
+        // }
 
         private void OnEnable()
         {
+            waveSpawner.OnWavesFinished += levelManager.LevelCopleted;
+            waveSpawner.OnCountdown += viewCountdown.SetTextCountdown;
             SceneManager.sceneLoaded += OnSceneLoaded;
             levelManager.OnLevelCompleted += playerStats.ResetLivesMoney;
+            levelManager.OnLevelCompleted += gameView.SwitchCanvasLevelCompleted;
+            view_PanelLevelCompleted.OnButtonNextClicked += levelManager.NextLevel;
         }
 
         private void OnDisable()
         {
+            waveSpawner.OnWavesFinished -= levelManager.LevelCopleted;
+            waveSpawner.OnCountdown -= viewCountdown.SetTextCountdown;
             SceneManager.sceneLoaded -= OnSceneLoaded;
-            levelManager.OnLevelCompleted += playerStats.ResetLivesMoney;
-            waveSpawner.OnWavesFinished -= levelManager.NextLevel;
+            levelManager.OnLevelCompleted -= playerStats.ResetLivesMoney;
+            levelManager.OnLevelCompleted -= gameView.SwitchCanvasLevelCompleted;
+            view_PanelLevelCompleted.OnButtonNextClicked -= levelManager.NextLevel;
         }
 
         private void OnSceneLoaded(Scene scene, LoadSceneMode mode)

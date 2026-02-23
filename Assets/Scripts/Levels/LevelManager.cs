@@ -26,7 +26,7 @@ public class LevelManager : MonoBehaviour
         CurrentLevelName = levelName;
     }
 
-    public void NextLevel()
+    public void NextLevel() // [ ] What difference between level controller and level manager?
     {
         if (!string.IsNullOrEmpty(CurrentLevelName))
         {
@@ -40,7 +40,10 @@ public class LevelManager : MonoBehaviour
             CurrentLevelName = nextLevel;
             CurrentLevelName = nextLevel;
         }
+    }
 
+    public void LevelCopleted() // [ ] What better name? Should I create this method?
+    {
         OnLevelCompleted?.Invoke();
     }
 }
