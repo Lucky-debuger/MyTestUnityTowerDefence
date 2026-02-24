@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 public class LevelManager : MonoBehaviour
 {
     [SerializeField] private string[] levels;
+    [SerializeField] private Scene menuScene;
     [SerializeField] private GameState gameState;
 
     private int _currentLevelIndex = -1;
@@ -23,10 +24,9 @@ public class LevelManager : MonoBehaviour
         CurrentLevelName = levelName;
         _currentLevelIndex = Array.IndexOf(levels, levelName);
         SceneManager.LoadSceneAsync(levelName, LoadSceneMode.Additive);
-        CurrentLevelName = levelName;
     }
 
-    public void NextLevel() // [ ] What difference between level controller and level manager?
+    public void LoadNextLevel()
     {
         if (!string.IsNullOrEmpty(CurrentLevelName))
         {
@@ -38,11 +38,22 @@ public class LevelManager : MonoBehaviour
             string nextLevel = levels[_currentLevelIndex + 1];
             SceneManager.LoadSceneAsync(nextLevel, LoadSceneMode.Additive);
             CurrentLevelName = nextLevel;
-            CurrentLevelName = nextLevel;
         }
     }
 
-    public void LevelCopleted() // [ ] What better name? Should I create this method?
+    public void ReturnToMenu()
+    {
+
+        SceneManager.LoadScene("Menu", LoadSceneMode.Single);
+    }
+
+    public void ReloadCurrentScene()
+    {
+        SceneManager.UnloadSceneAsync(CurrentLevelName);
+        SceneManager.LoadSceneAsync(CurrentLevelName, LoadSceneMode.Additive);
+    }
+
+    public void LevelCompleted()
     {
         OnLevelCompleted?.Invoke();
     }

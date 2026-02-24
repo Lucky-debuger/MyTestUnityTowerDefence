@@ -1,14 +1,19 @@
 using UnityEngine;
 
-namespace GameConstant // [ ] I gave the name correct?
+namespace GameConstant
 {
     public class GameView: MonoBehaviour
     {
-        [SerializeField] GameObject canvasLevelCompleted; // [ ] GameObject or transform?
+        [SerializeField] GameObject canvasLevelCompleted;
 
-        public void SwitchCanvasLevelCompleted()
+        public void HideCanvasLevelCompleted()
         {
-            canvasLevelCompleted.SetActive(!canvasLevelCompleted.activeSelf);
+            canvasLevelCompleted.SetActive(false);
+        }
+
+        public void ShowCanvasLevelCompleted()
+        {
+            canvasLevelCompleted.SetActive(true);
         }
     }
 }
