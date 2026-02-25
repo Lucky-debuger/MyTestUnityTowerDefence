@@ -15,10 +15,25 @@ namespace menu
         private void OnEnable()
         {
             ViewMainMenu.OnButtonSelectLevelClicked += mainMenuController.SwitchSсreen;
+            ViewMainMenu.OnButtonBackClicked += mainMenuController.SwitchSсreen;
+            ViewMainMenu.OnButtonExitClicked += mainMenuController.Exit;
+
+            ViewMainMenu.OnButtonLevel1Clicked += mainMenuController.LoadLevel;
+            ViewMainMenu.OnButtonLevel2Clicked += mainMenuController.LoadLevel;
+            ViewMainMenu.OnButtonLevel3Clicked += mainMenuController.LoadLevel;
         }
+
         private void OnDisable()
         {
             ViewMainMenu.OnButtonSelectLevelClicked -= mainMenuController.SwitchSсreen;
+            ViewMainMenu.OnButtonBackClicked -= mainMenuController.SwitchSсreen;
+            ViewMainMenu.OnButtonExitClicked -= mainMenuController.Exit;
+
+            ViewMainMenu.OnButtonLevel1Clicked -= mainMenuController.LoadLevel;
+            ViewMainMenu.OnButtonLevel2Clicked -= mainMenuController.LoadLevel;
+            ViewMainMenu.OnButtonLevel3Clicked -= mainMenuController.LoadLevel;
         }
+
+
     }
 }
