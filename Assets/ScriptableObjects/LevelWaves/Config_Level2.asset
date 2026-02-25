@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 89ccf17c01b72b6498b07b3951d4d030, type: 3}
-  m_Name: Level_2Config
+  m_Name: Config_Level2
   m_EditorClassIdentifier: 
   waves:
   - {fileID: 11400000, guid: 7e8f5d4ee09defe4788562b8cf85a905, type: 2}

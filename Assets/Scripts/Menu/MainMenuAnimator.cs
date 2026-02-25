@@ -1,5 +1,7 @@
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.UI;
+using MyUI;
 
 namespace menu
 {
@@ -10,6 +12,8 @@ namespace menu
         [SerializeField] private float fadeDuration = 0.5f;
         [SerializeField] private float moveDuration = 0.6f;
         [SerializeField] private float moveOffset = 200f;
+        [SerializeField] private ViewMainMenu viewMainMenu;
+        [SerializeField] private ButtonHover buttonHoverSelectLevel;
 
         private void Awake()
         {
@@ -21,6 +25,29 @@ namespace menu
         {
             PlayShowAnimation();
         }
+
+        // private void OnEnable()
+        // {
+        //     foreach (Button button in viewMainMenu.buttons)
+        //     {
+        //         button.gameObject.GetComponent<ButtonHover>().OnEnter += AnimateButtonHover;
+        //         button.gameObject.GetComponent<ButtonHover>().OnExit += AnimateButtonHover;
+        //     }
+
+        //     // buttonHoverSelectLevel.OnEnter += AnimateButtonHover;
+        //     // buttonHoverSelectLevel.OnExit += AnimateButtonExit;
+        // }
+
+        // private void OnDisable()
+        // {
+        //     foreach (Button button in viewMainMenu.buttons)
+        //     {
+        //         button.gameObject.GetComponent<ButtonHover>().OnEnter -= AnimateButtonHover;
+        //         button.gameObject.GetComponent<ButtonHover>().OnExit -= AnimateButtonHover;
+        //     }
+        //     // buttonHoverSelectLevel.OnEnter -= AnimateButtonHover;
+        //     // buttonHoverSelectLevel.OnExit -= AnimateButtonExit;
+        // }
 
         public void PlayShowAnimation() // [ ] What's animation?
         {
@@ -34,9 +61,9 @@ namespace menu
             button.DOScale(1.1f, 0.15f).SetEase(Ease.OutQuad);
         }
 
-        public void AnimationButtonExit(RectTransform button)
+        public void AnimateButtonExit(RectTransform button)
         {
-            button.DOScale(1.1f, 0.15f).SetEase(Ease.OutQuad);
+            button.DOScale(1f, 0.15f).SetEase(Ease.OutQuad);
         }
     }
 }

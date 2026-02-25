@@ -33,11 +33,13 @@ public class LevelManager : MonoBehaviour
             SceneManager.UnloadSceneAsync(CurrentLevelName);
         }
 
-        if (_currentLevelIndex + 1 < levels.Length)
+        if (_currentLevelIndex+1 < levels.Length)
         {
-            string nextLevel = levels[_currentLevelIndex + 1];
+            string nextLevel = levels[_currentLevelIndex+1];
             SceneManager.LoadSceneAsync(nextLevel, LoadSceneMode.Additive);
+            _currentLevelIndex = _currentLevelIndex+1;
             CurrentLevelName = nextLevel;
+            gameState.SetLevel(CurrentLevelName);
         }
     }
 

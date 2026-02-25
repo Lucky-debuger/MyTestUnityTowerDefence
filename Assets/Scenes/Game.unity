@@ -1629,6 +1629,7 @@ MonoBehaviour:
   levels:
   - Level_01
   - Level_02
+  - Level_03
   menuScene:
     m_Handle: 0
   gameState: {fileID: 11400000, guid: 1639cd68f255c4c40885f143818bdb65, type: 2}
@@ -4045,7 +4046,7 @@ GameObject:
   - component: {fileID: 1988111639}
   - component: {fileID: 1988111640}
   m_Layer: 0
-  m_Name: CompositionRoot
+  m_Name: CompositionRoot_Game
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

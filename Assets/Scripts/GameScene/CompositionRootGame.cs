@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 
 namespace GameConstant
 {
-    public class CompositionRoot : MonoBehaviour
+    public class CompositionRootGame : MonoBehaviour
     {
         [SerializeField] private WaveSpawner waveSpawner;
         [SerializeField] private GameView gameView;
