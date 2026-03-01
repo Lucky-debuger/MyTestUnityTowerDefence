@@ -1,11 +1,12 @@
 using System;
+using Loading;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
     [SerializeField] private string[] levels;
-    [SerializeField] private Scene menuScene;
+    // [SerializeField] private Scene menuScene;
     [SerializeField] private GameState gameState;
 
     private int _currentLevelIndex = -1;
@@ -16,36 +17,38 @@ public class LevelManager : MonoBehaviour
 
     private void Start()
     {
-        StartLevel(gameState.selectedLevel);
+        StartLevel(gameState.SelectedLevel);
     }
 
     public void StartLevel(string levelName)
     {
         CurrentLevelName = levelName;
         _currentLevelIndex = Array.IndexOf(levels, levelName);
-        SceneManager.LoadSceneAsync(levelName, LoadSceneMode.Additive);
+        // SceneManager.LoadSceneAsync(levelName, LoadSceneMode.Additive);
+        LoadingSceneLoader.LoadLoadingScene();
     }
 
     public void LoadNextLevel()
     {
-        if (!string.IsNullOrEmpty(CurrentLevelName))
-        {
-            SceneManager.UnloadSceneAsync(CurrentLevelName);
-        }
+        // if (!string.IsNullOrEmpty(CurrentLevelName))
+        // {
+        //     SceneManager.UnloadSceneAsync(CurrentLevelName);
+        // }
 
         if (_currentLevelIndex+1 < levels.Length)
         {
             string nextLevel = levels[_currentLevelIndex+1];
-            SceneManager.LoadSceneAsync(nextLevel, LoadSceneMode.Additive);
+            // SceneManager.LoadSceneAsync(nextLevel, LoadSceneMode.Additive);
             _currentLevelIndex = _currentLevelIndex+1;
             CurrentLevelName = nextLevel;
             gameState.SetLevel(CurrentLevelName);
+
+            LoadingSceneLoader.LoadLoadingScene();
         }
     }
 
     public void ReturnToMenu()
     {
-
         SceneManager.LoadScene("Menu", LoadSceneMode.Single);
     }
 
