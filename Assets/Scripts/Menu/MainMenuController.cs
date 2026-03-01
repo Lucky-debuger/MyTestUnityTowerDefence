@@ -22,8 +22,6 @@ public class MainMenuController : MonoBehaviour
         {
             SceneManager.LoadScene("Game");
         }
-        
-        // SceneManager.LoadSceneAsync(levelName, LoadSceneMode.Additive);
     }
 
     public void SwitchSсreen(GameObject newScreen)

@@ -19,6 +19,7 @@ namespace MyUI
         public void OnPointerExit(PointerEventData eventData)
         {
             OnExit?.Invoke(GetComponent<RectTransform>());
+            
         }
     }
 }
