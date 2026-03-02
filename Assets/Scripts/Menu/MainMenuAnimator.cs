@@ -10,7 +10,7 @@ namespace menu
         [SerializeField] private CanvasGroup rootCanvasGroup; // [ ] Deal with the new component
         [SerializeField] private float fadeDuration = 1f;
         [SerializeField] private ViewMainMenu viewMainMenu;
-        [SerializeField] private ButtonHover buttonHoverSelectLevel;
+
 
         private void Awake()
         {

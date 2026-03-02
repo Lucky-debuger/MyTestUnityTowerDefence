@@ -49,6 +49,7 @@ public class LevelManager : MonoBehaviour
 
     public void ReturnToMenu()
     {
+        Debug.Log("1");
         SceneManager.LoadScene("Menu", LoadSceneMode.Single);
     }
 
