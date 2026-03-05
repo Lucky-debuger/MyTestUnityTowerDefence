@@ -10,7 +10,8 @@ namespace GameConstant
         [SerializeField] private LevelManager levelManager;
         [SerializeField] private PlayerStats playerStats;
         [SerializeField] private ViewCountdown viewCountdown;
-        [SerializeField] private ViewPanelLevelCompleted viewPanelLevelCompleted;
+        [SerializeField] private ViewLevelCompleted viewLevelCompleted;
+        [SerializeField] private ViewGameOver viewGameOver;
 
         private void Awake()
         {
@@ -21,24 +22,40 @@ namespace GameConstant
         {
             waveSpawner.OnWavesFinished += levelManager.LevelCompleted;
             waveSpawner.OnCountdown += viewCountdown.SetTextCountdown;
+
             SceneManager.sceneLoaded += OnSceneLoaded;
+
             levelManager.OnLevelCompleted += playerStats.ResetLivesMoney;
             levelManager.OnLevelCompleted += gameView.ShowCanvasLevelCompleted;
-            viewPanelLevelCompleted.OnButtonNextClicked += levelManager.LoadNextLevel;
-            viewPanelLevelCompleted.OnButtonMenuClicked += levelManager.ReturnToMenu;
-            viewPanelLevelCompleted.OnButtonRestartClicked += levelManager.ReloadCurrentScene;
+
+            viewLevelCompleted.OnButtonNextClicked += levelManager.LoadNextLevel;
+            viewLevelCompleted.OnButtonMenuClicked += levelManager.ReturnToMenu;
+            viewLevelCompleted.OnButtonRestartClicked += levelManager.ReloadCurrentScene;
+
+            viewGameOver.OnButtonMenuClicked += levelManager.ReturnToMenu;
+            viewGameOver.OnButtonRestartClicked += levelManager.ReloadCurrentScene;
+
+            PlayerStats.OnLivesOver += gameView.ShowCanvasGameOver;
         }
 
         private void OnDisable()
         {
             waveSpawner.OnWavesFinished -= levelManager.LevelCompleted;
             waveSpawner.OnCountdown -= viewCountdown.SetTextCountdown;
+
             SceneManager.sceneLoaded -= OnSceneLoaded;
+
             levelManager.OnLevelCompleted -= playerStats.ResetLivesMoney;
             levelManager.OnLevelCompleted -= gameView.ShowCanvasLevelCompleted;
-            viewPanelLevelCompleted.OnButtonNextClicked -= levelManager.LoadNextLevel;
-            viewPanelLevelCompleted.OnButtonMenuClicked -= levelManager.ReturnToMenu;
-            viewPanelLevelCompleted.OnButtonRestartClicked += levelManager.ReloadCurrentScene;
+
+            viewLevelCompleted.OnButtonNextClicked -= levelManager.LoadNextLevel;
+            viewLevelCompleted.OnButtonMenuClicked -= levelManager.ReturnToMenu;
+            viewLevelCompleted.OnButtonRestartClicked -= levelManager.ReloadCurrentScene;
+
+            viewGameOver.OnButtonMenuClicked -= levelManager.ReturnToMenu;
+            viewGameOver.OnButtonRestartClicked -= levelManager.ReloadCurrentScene;
+
+            PlayerStats.OnLivesOver -= gameView.ShowCanvasGameOver;
         }
 
         private void OnSceneLoaded(Scene scene, LoadSceneMode mode)

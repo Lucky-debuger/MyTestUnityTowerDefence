@@ -109,50 +109,6 @@ public class WaypointManager : MonoBehaviour
         }
     }
 
-
-    // void Update()
-    // {
-    //     if (!isMoving)
-    //     {
-    //         return;
-    //     }
-
-    //     if (_slowDuration > 0)
-    //     {
-    //         _slowDuration -= Time.deltaTime;
-    //         if (_slowDuration <= 0)
-    //         {
-    //             RemoveSlow();
-    //         }
-    //     }
-
-    //     if (waypointIndex < wayPoints.Count)
-    //     {
-    //         UpdateCurrentSpeed();
-    //         transform.position = Vector3.MoveTowards(transform.position, wayPoints[waypointIndex].position, Time.deltaTime * _currentMoveSpeed);
-
-    //         var direction = transform.position - wayPoints[waypointIndex].position;
-    //         var targetRotation = Quaternion.LookRotation(direction, Vector3.up);
-    //         transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * rotationSpeed);
-
-    //         var distance = Vector3.Distance(transform.position, wayPoints[waypointIndex].position);
-    //         if (distance <= 0.05f)
-    //         {
-    //             waypointIndex++;
-
-    //             if (isLoop && waypointIndex >= wayPoints.Count)
-    //             {
-    //                 waypointIndex = 0;
-    //             }
-    //             else if (!isLoop && waypointIndex >= wayPoints.Count)
-    //             {
-    //                 EndPath();
-    //                 return;
-    //             }
-    //         }
-    //     }
-
-    // }
     public void StartMoving()
     {
         waypointIndex = 0;

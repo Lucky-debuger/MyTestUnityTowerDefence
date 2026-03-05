@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
 {
-
     private static float _money;
     private static int _lives;
 
@@ -18,6 +17,7 @@ public class PlayerStats : MonoBehaviour
 
     public static event Action<float> OnMoneyChanged;
     public static event Action<float> OnLivesChanged;
+    public static event Action OnLivesOver;
 
     public static void TryBuy(float money)
     {
@@ -38,7 +38,7 @@ public class PlayerStats : MonoBehaviour
         
         if (_lives <= 0)
         {
-            
+            OnLivesOver?.Invoke();
         }
 
         OnLivesChanged?.Invoke(_lives);
