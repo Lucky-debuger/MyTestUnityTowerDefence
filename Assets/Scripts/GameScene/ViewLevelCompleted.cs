@@ -4,36 +4,35 @@ using UnityEngine.UI;
 
 namespace GameConstant
 {
+    public enum LevelCompletedAction
+    {
+        Next,
+        Menu,
+        Restart
+    }
+
     public class ViewLevelCompleted : MonoBehaviour
     {
         [SerializeField] private Button buttonNext;
         [SerializeField] private Button buttonMenu;
-        [SerializeField] private Button buttonRestart;
+        [SerializeField] private Button buttonReload;
 
-        public Button ButtonNext => buttonNext;
-        public Button ButtonMenu => buttonMenu;
-        public Button ButtonRestart => buttonRestart;
+        public event Action<LevelCompletedAction> OnAction; // [ ] Вспомнить какие есть еще события
 
-        public event Action OnButtonNextClicked; // [ ] What types of actions do we have?
-        public event Action OnButtonMenuClicked;
-        public event Action OnButtonRestartClicked;
-
-        private void OnEnable()
+        public void Init()
         {
-            buttonNext.onClick.AddListener(ButtonNextClicked);
-            buttonMenu.onClick.AddListener(ButtonMenuClicked);
-            buttonRestart.onClick.AddListener(ButtonRestartClicked);
+            buttonNext.onClick.AddListener(() => OnAction?.Invoke(LevelCompletedAction.Next));
+            buttonMenu.onClick.AddListener(() => OnAction?.Invoke(LevelCompletedAction.Menu));
+            buttonReload.onClick.AddListener(() => OnAction?.Invoke(LevelCompletedAction.Restart));
         }
 
-        private void OnDisable()
+        public void Dispose()
         {
-            buttonNext.onClick.RemoveListener(ButtonNextClicked);
-            buttonMenu.onClick.RemoveListener(ButtonMenuClicked);
-            buttonRestart.onClick.RemoveListener(ButtonRestartClicked);
+            buttonNext.onClick.RemoveAllListeners();
+            buttonMenu.onClick.RemoveAllListeners();
+            buttonReload.onClick.RemoveAllListeners();
         }
 
-        private void ButtonNextClicked() => OnButtonNextClicked?.Invoke();
-        private void ButtonMenuClicked() => OnButtonMenuClicked?.Invoke();
-        private void ButtonRestartClicked() => OnButtonRestartClicked?.Invoke();
+
     }
 }

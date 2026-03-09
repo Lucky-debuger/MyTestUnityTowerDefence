@@ -951,7 +951,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttonNext: {fileID: 1914014867}
   buttonMenu: {fileID: 2112398848}
-  buttonRestart: {fileID: 162219650}
+  buttonReload: {fileID: 162219650}
 --- !u!114 &398826248
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3601,8 +3601,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0f958bf4b3074c4b998484d900039e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  viewLevelCompleted: {fileID: 398826247}
-  viewGameOver: {fileID: 754206482}
 --- !u!1 &2070668453
 GameObject:
   m_ObjectHideFlags: 0
