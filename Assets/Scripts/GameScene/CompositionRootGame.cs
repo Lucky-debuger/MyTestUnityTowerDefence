@@ -5,6 +5,8 @@ namespace GameConstant
 {
     public class CompositionRootGame : MonoBehaviour
     {
+        // [ ] Write summary
+
         [SerializeField] private WaveSpawner waveSpawner;
         [SerializeField] private GameView gameView;
         [SerializeField] private LevelManager levelManager;
@@ -13,11 +15,35 @@ namespace GameConstant
         [SerializeField] private ViewLevelCompleted viewLevelCompleted;
         [SerializeField] private ViewGameOver viewGameOver;
 
+        private GamePresentor _presenter;
+
         private void Awake()
         {
             BuildSystem.Instance.SetLevelManager(levelManager);
+
+            _presenter = new GamePresentor(
+                waveSpawner,
+                gameView,
+                levelManager,
+                playerStats,
+                viewCountdown,
+                viewLevelCompleted,
+                viewGameOver
+            );
         }
 
+        private void OnEnable()
+        {
+            _presenter.Initialize();
+            SceneManager.sceneLoaded += OnSceneLoaded;
+        }
+
+
+        private void OnDisable()
+        {
+            SceneManager.sceneLoaded -= OnSceneLoaded;
+            _presenter.Dispose();
+        }
 
         private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
         {
