@@ -78,10 +78,6 @@ public class DragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
         
         Ray ray = _mainCamera.ScreenPointToRay(eventData.position);
 
-        Debug.DrawRay(ray.origin, ray.direction, Color.red, 50);
-        Debug.Log($"EventData.position: {eventData.position}");
-        Debug.Log($"ray.origin {ray.origin}");
-
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit, 100, layer))
         {
