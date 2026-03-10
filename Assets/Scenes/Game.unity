@@ -1507,8 +1507,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5a75934380fc5a4397a7f732b04798e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonMenu: {fileID: 2001481187}
   buttonRestart: {fileID: 1855993816}
+  buttonMenu: {fileID: 2001481187}
 --- !u!114 &754206483
 MonoBehaviour:
   m_ObjectHideFlags: 0

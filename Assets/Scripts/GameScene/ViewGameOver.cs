@@ -4,30 +4,29 @@ using UnityEngine.UI;
 
 namespace GameConstant
 {
+    public enum GameOverAction
+    {
+        Restart,
+        Menu
+    }
+    
     public class ViewGameOver : MonoBehaviour
     {
-        [SerializeField] private Button buttonMenu;
         [SerializeField] private Button buttonRestart;
+        [SerializeField] private Button buttonMenu;
 
-        public Button ButtonMenu => buttonMenu;
-        public Button ButtonRestart => buttonRestart;
+        public event Action<GameOverAction> OnAction;
 
-        public event Action OnButtonMenuClicked;
-        public event Action OnButtonRestartClicked;
-
-        private void OnEnable()
+        public void Init()
         {
-            buttonMenu.onClick.AddListener(ButtonMenuClicked);
-            buttonRestart.onClick.AddListener(ButtonRestartClicked);
+            buttonRestart.onClick.AddListener(() => OnAction?.Invoke(GameOverAction.Restart));
+            buttonMenu.onClick.AddListener(() => OnAction?.Invoke(GameOverAction.Menu));
         }
 
-        private void OnDisable()
+        public void Dispose()
         {
-            buttonMenu.onClick.RemoveListener(ButtonMenuClicked);
-            buttonRestart.onClick.RemoveListener(ButtonRestartClicked);
+            buttonRestart.onClick.RemoveAllListeners();
+            buttonMenu.onClick.RemoveAllListeners();
         }
-
-        private void ButtonMenuClicked() => OnButtonMenuClicked?.Invoke();
-        private void ButtonRestartClicked() => OnButtonRestartClicked?.Invoke();
     }
 }

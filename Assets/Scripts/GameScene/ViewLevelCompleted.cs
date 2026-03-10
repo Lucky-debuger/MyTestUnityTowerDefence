@@ -32,7 +32,5 @@ namespace GameConstant
             buttonMenu.onClick.RemoveAllListeners();
             buttonReload.onClick.RemoveAllListeners();
         }
-
-
     }
 }

@@ -1,11 +1,14 @@
 using System;
 using GameConstant;
 
-public class GamePresentor : IDisposable // [ ] Why we need this interface?
+public class GamePresentor : IDisposable
 {
-    // [ ] Write summery
+    /// <summary>
+    /// GamePresentor. Initializes the connections between the logic of the layer and the UI,
+    /// subscribes to the necessary events and releases them in Dispose
+    /// </summary>
 
-    private readonly WaveSpawner _waveSpawner; // [ ] Why readonly?
+    private readonly WaveSpawner _waveSpawner;
     private readonly GameView _gameView;
     private readonly LevelManager _levelManager;
     private readonly PlayerStats _playerStats;
@@ -32,21 +35,19 @@ public class GamePresentor : IDisposable // [ ] Why we need this interface?
         _viewGameOver = viewGameOver;
     }
 
-    public void Initialize() // [ ] Why do we sometimes write init and sometimes initialize?
+    public void Initialize()
     {
         _waveSpawner.OnWavesFinished += _levelManager.LevelCompleted;
         _waveSpawner.OnCountdown += _viewCountdown.SetTextCountdown;
 
-        // SceneManager.sceneLoaded += OnSceneLoaded; // [ ] Why did we remove it?
-
         _levelManager.OnLevelCompleted += _playerStats.ResetLivesMoney;
         _levelManager.OnLevelCompleted += _gameView.ShowCanvasLevelCompleted;
 
-        _viewGameOver.OnButtonMenuClicked += _levelManager.ReturnToMenu;
-        _viewGameOver.OnButtonRestartClicked += _levelManager.ReloadCurrentScene;
-
         _viewLevelCompleted.Init();
         _viewLevelCompleted.OnAction += HandleLevelCompletedAction;
+
+        _viewGameOver.Init();
+        _viewGameOver.OnAction += HandleGameOverAction;
 
         PlayerStats.OnLivesOver += _gameView.ShowCanvasGameOver;
     }
@@ -69,6 +70,20 @@ public class GamePresentor : IDisposable // [ ] Why we need this interface?
         }
     }
 
+    private void HandleGameOverAction(GameOverAction action)
+    {
+        switch (action)
+        {
+            case GameOverAction.Restart:
+                _levelManager.ReloadCurrentScene();
+                break;
+            
+            case GameOverAction.Menu:
+                _levelManager.ReturnToMenu();
+                break;
+        }
+    }
+
     public void Dispose()
     {
         _waveSpawner.OnWavesFinished -= _levelManager.LevelCompleted;
@@ -77,11 +92,11 @@ public class GamePresentor : IDisposable // [ ] Why we need this interface?
         _levelManager.OnLevelCompleted -= _playerStats.ResetLivesMoney;
         _levelManager.OnLevelCompleted -= _gameView.ShowCanvasLevelCompleted;
 
-        _viewGameOver.OnButtonMenuClicked -= _levelManager.ReturnToMenu;
-        _viewGameOver.OnButtonRestartClicked -= _levelManager.ReloadCurrentScene;
-
         _viewLevelCompleted.OnAction -= HandleLevelCompletedAction;
         _viewLevelCompleted.Dispose();
+
+        _viewGameOver.OnAction -= HandleGameOverAction;
+        _viewGameOver.Dispose();
 
         PlayerStats.OnLivesOver -= _gameView.ShowCanvasGameOver;
     }
