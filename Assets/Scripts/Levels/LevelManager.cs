@@ -1,8 +1,6 @@
 using System;
 using Loading;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-
 public class LevelManager : MonoBehaviour
 {
     [SerializeField] private string[] levels;
@@ -10,10 +8,16 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private GameState gameState;
 
     private int _currentLevelIndex = -1;
+    private ISceneLoader _sceneLoader;
 
     public string CurrentLevelName { get; private set; }
 
     public event Action OnLevelCompleted;
+
+    public void Construct(ISceneLoader sceneLoader)
+    {
+        _sceneLoader = sceneLoader;
+    }
 
     private void Start()
     {
@@ -36,19 +40,18 @@ public class LevelManager : MonoBehaviour
             CurrentLevelName = nextLevel;
             gameState.SetLevel(CurrentLevelName);
 
-            LoadingSceneLoader.LoadLoadingScene();
+            _sceneLoader.LoadNextLevel();
         }
     }
 
     public void ReturnToMenu()
     {
-        SceneManager.LoadScene("Menu", LoadSceneMode.Single);
+        _sceneLoader.LoadMenu();
     }
 
     public void ReloadCurrentScene()
     {
-        SceneManager.UnloadSceneAsync(CurrentLevelName);
-        SceneManager.LoadSceneAsync(CurrentLevelName, LoadSceneMode.Additive);
+        _sceneLoader.ReloadLevel(CurrentLevelName);
     }
 
     public void LevelCompleted()

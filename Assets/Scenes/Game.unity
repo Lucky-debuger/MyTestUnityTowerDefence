@@ -3280,6 +3280,7 @@ MonoBehaviour:
   viewCountdown: {fileID: 303529717}
   viewLevelCompleted: {fileID: 398826247}
   viewGameOver: {fileID: 754206482}
+  gameState: {fileID: 11400000, guid: 1639cd68f255c4c40885f143818bdb65, type: 2}
 --- !u!1001 &2001481185
 PrefabInstance:
   m_ObjectHideFlags: 0

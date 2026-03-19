@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 using TMPro;
 using System;
+using UnityEngine.SceneManagement;
 
 
 public class WaveSpawner : MonoBehaviour
@@ -9,6 +10,7 @@ public class WaveSpawner : MonoBehaviour
     [SerializeField] private float timeBetweenWaves = 5f;
     [SerializeField] private TextMeshProUGUI waveCountdownText;
 
+    private LevelManager _levelManager;
     private float _countdown = 2f; // Time before start the first wave
     private int _waveIndex = 0;
     private bool _isWorking = false;
@@ -18,6 +20,11 @@ public class WaveSpawner : MonoBehaviour
 
     public event Action<float> OnCountdown;
     public event Action OnWavesFinished;
+
+    public void Init(LevelManager levelManager)
+    {
+        _levelManager = levelManager;
+    }
 
     private void Update()
     {
@@ -58,6 +65,8 @@ public class WaveSpawner : MonoBehaviour
     private void SpawnEnemy(GameObject enemy)
     {
         Enemy enemyInstance = Instantiate(enemy, _spawnPoint.position, _spawnPoint.rotation).GetComponent<Enemy>();
+        Scene levelScene = SceneManager.GetSceneByName(_levelManager.CurrentLevelName);
+        SceneManager.MoveGameObjectToScene(enemyInstance.gameObject, levelScene);
         enemyInstance.OnDied += OnEnemyDied;
         _enemiesAlive++;
     }
@@ -86,8 +95,9 @@ public class WaveSpawner : MonoBehaviour
         }
     }
 
-    private void ResetSpawner()
+    public void ResetSpawner()
     {
         _waveIndex = 0;
+        _enemiesAlive = 0;
     }
 }

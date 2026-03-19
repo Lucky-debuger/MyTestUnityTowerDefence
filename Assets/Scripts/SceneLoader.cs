@@ -1,20 +1,27 @@
 using UnityEngine.SceneManagement;
+using Loading;
+using System;
 
 public class SceneLoader : ISceneLoader
 {
-    public void LoadLevel(string sceneName)
+    /// <summary>
+    /// Store methods related to loading individual scenes
+    /// </summary>
+    public event Action OnReloadStarted;
+
+    public void LoadNextLevel()
     {
-        SceneManager.LoadScene(sceneName, LoadSceneMode.Additive);
+        LoadingSceneLoader.LoadLoadingScene();
     }
 
     public void ReloadLevel(string sceneName)
     {
-        SceneManager.LoadScene(sceneName, LoadSceneMode.Additive); // [ ] Why we dont use LoadSceneAsync?
-        // [ ] Maybe we can get current scene from gameState?
+        OnReloadStarted?.Invoke();
+        LoadingSceneLoader.LoadLoadingScene();
     }
 
     public void LoadMenu()
     {
-        SceneManager.LoadScene("Menu", LoadSceneMode.Single); // [ ] Should we do all in additive?
+        SceneManager.LoadScene("Menu", LoadSceneMode.Single);
     }
 }

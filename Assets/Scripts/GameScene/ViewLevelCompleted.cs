@@ -17,7 +17,7 @@ namespace GameConstant
         [SerializeField] private Button buttonMenu;
         [SerializeField] private Button buttonReload;
 
-        public event Action<LevelCompletedAction> OnAction; // [ ] Вспомнить какие есть еще события
+        public event Action<LevelCompletedAction> OnAction;
 
         public void Init()
         {

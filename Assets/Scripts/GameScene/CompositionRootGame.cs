@@ -5,7 +5,10 @@ namespace GameConstant
 {
     public class CompositionRootGame : MonoBehaviour
     {
-        // [ ] Write summary
+        /// <summary>
+        /// Composition Root of the scene. Responsible for creating all game services, configuring
+        /// dependencies, and launching the main Presenter
+        /// </summary>
 
         [SerializeField] private WaveSpawner waveSpawner;
         [SerializeField] private GameView gameView;
@@ -14,12 +17,15 @@ namespace GameConstant
         [SerializeField] private ViewCountdown viewCountdown;
         [SerializeField] private ViewLevelCompleted viewLevelCompleted;
         [SerializeField] private ViewGameOver viewGameOver;
+        [SerializeField] private GameState gameState;
 
+        private SceneLoader _sceneLoader;
         private GamePresentor _presenter;
 
         private void Awake()
         {
             BuildSystem.Instance.SetLevelManager(levelManager);
+            _sceneLoader = new SceneLoader();
 
             _presenter = new GamePresentor(
                 waveSpawner,
@@ -30,12 +36,17 @@ namespace GameConstant
                 viewLevelCompleted,
                 viewGameOver
             );
+
+            levelManager.Construct(_sceneLoader);
+            waveSpawner.Init(levelManager);
         }
 
         private void OnEnable()
         {
             _presenter.Initialize();
             SceneManager.sceneLoaded += OnSceneLoaded;
+            _sceneLoader.OnReloadStarted += waveSpawner.ResetSpawner;
+            _sceneLoader.OnReloadStarted += playerStats.ResetLivesMoney;
         }
 
 
@@ -43,6 +54,8 @@ namespace GameConstant
         {
             SceneManager.sceneLoaded -= OnSceneLoaded;
             _presenter.Dispose();
+             _sceneLoader.OnReloadStarted -= waveSpawner.ResetSpawner;
+             _sceneLoader.OnReloadStarted -= playerStats.ResetLivesMoney;
         }
 
         private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
@@ -50,6 +63,7 @@ namespace GameConstant
             LevelController levelController = FindAnyObjectByType<LevelController>(); // TODO Study Zenject. Do I have to search anyway?
             TurretManager turretManager = FindAnyObjectByType<TurretManager>();
             gameView.HideCanvasLevelCompleted();
+            gameView.HideCanvasGameOver();
             
             if (levelController != null)
             {

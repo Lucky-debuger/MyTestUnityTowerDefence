@@ -1,6 +1,6 @@
-public interface ISceneLoader // [ ] Why we need this interface?
+public interface ISceneLoader
 {
-    public void LoadLevel(string levelName);
+    public void LoadNextLevel();
     public void ReloadLevel(string sceneName);
     public void LoadMenu();
 }

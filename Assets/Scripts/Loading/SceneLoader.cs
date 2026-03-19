@@ -1,6 +1,4 @@
-using System.Diagnostics;
 using UnityEngine.SceneManagement;
-using UnityEngine;
 
 namespace Loading
 {
